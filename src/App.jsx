@@ -5,15 +5,11 @@ import theme from "./theme/theme";
 
 function App() {
   return (
-    <Wrapper>
-      <ThemeProvider theme={theme}>
-        <RootRoute></RootRoute>
-        <GlobalStyle></GlobalStyle>
-      </ThemeProvider>
-    </Wrapper>
+    <ThemeProvider theme={theme}>
+      <RootRoute />
+      <GlobalStyle />
+    </ThemeProvider>
   );
 }
 
 export default App;
-
-const Wrapper = styled.div``;
