@@ -1,0 +1,17 @@
+:root {
+    --input-text-bg: #f1f1f1;
+}
+
+.search_wrap {
+}
+
+.search_wrap .search-input {
+    padding: 13px 15px;
+    background: var(--input-text-bg);
+    border-radius: 10px;
+}
+
+.search_wrap .form-control:focus {
+    background: var(--input-text-bg);
+    box-shadow: none;
+}
