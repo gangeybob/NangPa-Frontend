@@ -53,6 +53,14 @@ const SearchBtn = styled.button`
   top: 419px;
   border-radius: 10px;
   margin: 0;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.165px;
+
+  color: #a9a9a9;
 `;
 
 function Main() {
