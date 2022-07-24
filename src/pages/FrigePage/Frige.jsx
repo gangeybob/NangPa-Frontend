@@ -4,14 +4,9 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../assets/search.svg";
 import { selectedIngredientAtom } from "../../atom";
+import FrigeAllList from "./FrigeAllList";
 
-let data = [
-  { id: 1, title: "계란" },
-  { id: 2, title: "간장" },
-  { id: 3, title: "밥" },
-  { id: 4, title: "참기름" },
-  { id: 5, title: "버터" },
-];
+let data = ["간장", "계란", "밥", "참기름", "버터"];
 
 const FrigeContainer = styled.div`
   width: 100vw;
@@ -73,10 +68,12 @@ const IngredientItem = styled.button`
 
 const SelectedIngredientItem = styled.button`
   background: #2e8cfe;
+  border: 1px solid #2e8cfe;
   border-radius: 50px;
   display: flex;
   align-items: center;
   height: 37px;
+  color: white;
 `;
 
 const IngredientName = styled.p`
@@ -114,25 +111,23 @@ function Frige() {
               {results.map((item) =>
                 searchInput === "" ? null : (
                   <div>
-                    {selectedIngredient.indexOf(item.title) === -1 ? (
+                    {selectedIngredient.indexOf(item) === -1 ? (
                       <IngredientItem
                         onClick={() =>
-                          setSelectedIngredient((prev) => [...prev, item.title])
+                          setSelectedIngredient((prev) => [...prev, item])
                         }
                       >
-                        <IngredientName>{item.title}</IngredientName>
+                        <IngredientName>{item}</IngredientName>
                       </IngredientItem>
                     ) : (
                       <SelectedIngredientItem
                         onClick={() =>
                           setSelectedIngredient((prev) =>
-                            [...prev].filter(
-                              (element) => element !== item.title
-                            )
+                            [...prev].filter((element) => element !== item)
                           )
                         }
                       >
-                        <IngredientName>{item.title}</IngredientName>
+                        <IngredientName>{item}</IngredientName>
                       </SelectedIngredientItem>
                     )}
                   </div>
@@ -142,7 +137,9 @@ function Frige() {
           )}
         />
       </FrigeSearchContainer>
-      <FrigeContainer></FrigeContainer>
+      <FrigeContainer>
+        <FrigeAllList />
+      </FrigeContainer>
     </>
   );
 }
