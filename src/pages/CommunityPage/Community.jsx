@@ -1,23 +1,47 @@
-import React from 'react';
-import { Container, Row, Col, ListGroup } from 'react-bootstrap';
+import axios from 'axios';
+import React, { Component } from 'react';
+import ReactLoading from 'react-loading';
 import CommunityCard from './CommunityCard';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-function Community() {
-    let res = this.state.users;
-    let { isloading } = this.state;
-    return (
-        <>
-            <Container>
-                <Row>
-                    <Col xs={12}>
-                        <ListGroup>
-                            <ListGroup.Item>{isloading ? <ReactLoading type={'bars'} color='#021155' /> : <CommunityCard />}</ListGroup.Item>
-                        </ListGroup>
-                    </Col>
-                </Row>
-            </Container>
-        </>
-    );
+export default class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            users: [],
+            isloading: true,
+        };
+    }
+
+    async componentDidMount() {
+        //
+        await axios.get(`...`).then((res) => {
+            const users = res;
+            this.setState({ users, isloading: false });
+        });
+    }
+
+    render() {
+        let res = this.state.users;
+        let { isloading } = this.state;
+        return (
+            <>
+                {isloading ? (
+                    <ReactLoading type={'bars'} color='#021155' />
+                ) : (
+                    <>
+                        {res?.data?.data?.map((x) => {
+                            return (
+                                <ListGroup>
+                                    <ListGroupItem>
+                                        <CommunityCard />
+                                    </ListGroupItem>
+                                </ListGroup>
+                            );
+                        })}
+                    </>
+                )}
+            </>
+        );
+    }
 }
-
-export default Community;
