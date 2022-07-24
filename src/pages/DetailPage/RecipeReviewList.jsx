@@ -11,7 +11,6 @@ const StyledText = styled.p`
 
 const RecipeReviewPhotoSwiper = styled.div`
   display: flex;
-  flex-direction: row;
   overflow-x: scroll;
   width: 100%;
 `;
@@ -19,12 +18,10 @@ const RecipeReviewPhotoSwiper = styled.div`
 const RecipeReviewPhotoContainer = styled.div`
   height: 123px;
   width: 158px;
-
   overflow: hidden;
 `;
 
 const RecipeReviewPhoto = styled.img`
-  width: 100%;
   object-fit: cover;
 `;
 
