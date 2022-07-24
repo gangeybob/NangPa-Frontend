@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Main from "../pages/Main";
+import Main from "../pages/MainPage/Main";
 import Detail from "../pages/DetailPage/Detail";
 import Search from "../pages/SearchPage/SearchIndex";
 import MyPage from "../pages/MyPage/MyPage";
