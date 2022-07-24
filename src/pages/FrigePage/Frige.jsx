@@ -1,10 +1,11 @@
 import { useState } from "react";
 import SearchFilter from "react-filter-search";
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../assets/search.svg";
 import { selectedIngredientAtom } from "../../atom";
-import FrigeAllList from "./FrigeAllList";
+import AllFrigeList from "./AllFrigeList";
 
 let data = ["간장", "계란", "밥", "참기름", "버터"];
 
@@ -84,6 +85,27 @@ const IngredientName = styled.p`
   letter-spacing: -0.03em;
 `;
 
+const SelectionCompleteBtn = styled.button`
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  background: #2e8cfe;
+  border-radius: 10px;
+  width: 328px;
+  height: 46px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  &:disabled {
+    background: #a9a9a9;
+  }
+`;
+
 function Frige() {
   const [searchInput, setSearchInput] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useRecoilState(
@@ -137,9 +159,16 @@ function Frige() {
           )}
         />
       </FrigeSearchContainer>
-      <FrigeContainer>
-        <FrigeAllList />
-      </FrigeContainer>
+      <IngredientItemList>
+        <AllFrigeList />
+      </IngredientItemList>
+      {selectedIngredient.length === 0 ? (
+        <SelectionCompleteBtn disabled>선택 완료</SelectionCompleteBtn>
+      ) : (
+        <Link to={{ pathname: "/myfrige" }}>
+          <SelectionCompleteBtn>선택 완료</SelectionCompleteBtn>
+        </Link>
+      )}
     </>
   );
 }
