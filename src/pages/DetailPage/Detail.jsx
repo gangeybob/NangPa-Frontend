@@ -1,76 +1,76 @@
-import styled from 'styled-components';
-import { ReactComponent as Share } from '../assets/share.svg';
-import { ReactComponent as Bookmark } from '../assets/bookmark.svg';
-import { ReactComponent as Like } from '../assets/like.svg';
-import IngredientTagList from '../components/IngredientTagList';
+import styled from "styled-components";
+import { ReactComponent as Share } from "../../assets/share.svg";
+import { ReactComponent as Bookmark } from "../../assets/bookmark.svg";
+import { ReactComponent as Like } from "../../assets/like.svg";
+import IngredientTagList from "./IngredientTagList";
 
 const RecipePhotoContainer = styled.div`
-    position: relative;
-    height: 470px;
-    overflow: hidden;
+  position: relative;
+  height: 470px;
+  overflow: hidden;
 `;
 
 const RecipePhoto = styled.img`
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-    height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 100%;
 `;
 
 const SnsContainer = styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
 `;
 
 const LikeWrapper = styled.div`
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 `;
 const LikeCount = styled.p`
-    margin: 0px 0px 0px 4px;
+  margin: 0px 0px 0px 4px;
 `;
 
 const BtnContainer = styled.div`
-    display: flex;
-    gap: 13px;
+  display: flex;
+  gap: 13px;
 `;
 
 const ContentsContainer = styled.div`
-    margin: 19px 23px;
-    display: flex;
-    flex-direction: column;
+  margin: 19px 23px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const RecipeTitle = styled.p`
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 22px;
-    line-height: 120%;
-    letter-spacing: -0.02em;
-    margin: 0px;
-    margin-bottom: 6px;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  margin: 0px;
+  margin-bottom: 6px;
 `;
 
 const RecipeShortDescription = styled.p`
-    margin: 0;
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-    letter-spacing: -0.02em;
+  margin: 0;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
 
-    color: #918e8e;
+  color: #918e8e;
 `;
 
 const IngredientContainer = styled.div`
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Subtitle = styled.p`
