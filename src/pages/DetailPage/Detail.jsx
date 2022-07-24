@@ -5,6 +5,10 @@ import { ReactComponent as Like } from "../../assets/like.svg";
 import IngredientTagList from "./IngredientTagList";
 import RecipeDetailItemList from "./RecipeDetailItemList";
 import RecipeReviewList from "./RecipeReviewList";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import { viewedRecipeAtom } from "../../atom";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const RecipePhotoContainer = styled.div`
   position: relative;
@@ -99,6 +103,11 @@ const Border = styled.div`
 `;
 
 function Detail() {
+  const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
+  useEffect(() => {
+    setViewedRecipe((prev) => [...prev, "아이디"]);
+  }, [setViewedRecipe]);
+
   return (
     <>
       <RecipePhotoContainer>
@@ -110,7 +119,10 @@ function Detail() {
           <LikeWrapper>
             <Like />
             {/* 좋아요버튼 기능구현 필요 */}
-            <LikeCount>14k</LikeCount>
+            {/* 최근 본 레시피 확인용 링크 */}
+            <Link to={{ pathname: "/" }}>
+              <LikeCount>14k</LikeCount>
+            </Link>
           </LikeWrapper>
           <BtnContainer>
             <Share />

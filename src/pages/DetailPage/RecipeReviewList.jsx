@@ -13,7 +13,7 @@ const RecipeReviewPhotoSwiper = styled.div`
   display: flex;
   overflow-x: scroll;
   padding-left: 23px;
-  margin: 12px 0px 80px 0px;
+  margin: 12px 0px 16px 0px;
 `;
 
 const RecipeReviewPhoto = styled.img`
@@ -61,7 +61,7 @@ function RecipeReviewList() {
         {reviewMockData.map((item) => {
           return (
             <div>
-              <RecipeReviewPhoto src={item.src} />
+              <RecipeReviewPhoto key={item.src} src={item.src} />
             </div>
           );
         })}
