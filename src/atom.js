@@ -2,7 +2,7 @@ import { atom } from "recoil";
 
 export const selectedIngredientAtom = atom({
   key: "selectedIngredient",
-  default: ["토마토", "계란", "식빵"],
+  default: [],
 });
 
 export const viewedRecipeAtom = atom({

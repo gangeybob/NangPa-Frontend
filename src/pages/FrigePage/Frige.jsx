@@ -1,17 +1,13 @@
 import { useState } from "react";
 import SearchFilter from "react-filter-search";
+import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../assets/search.svg";
 import { selectedIngredientAtom } from "../../atom";
+import AllFrigeList from "./AllFrigeList";
 
-let data = [
-  { id: 1, title: "계란" },
-  { id: 2, title: "간장" },
-  { id: 3, title: "밥" },
-  { id: 4, title: "참기름" },
-  { id: 5, title: "버터" },
-];
+let data = ["간장", "계란", "밥", "참기름", "버터"];
 
 const FrigeContainer = styled.div`
   width: 100vw;
@@ -73,10 +69,12 @@ const IngredientItem = styled.button`
 
 const SelectedIngredientItem = styled.button`
   background: #2e8cfe;
+  border: 1px solid #2e8cfe;
   border-radius: 50px;
   display: flex;
   align-items: center;
   height: 37px;
+  color: white;
 `;
 
 const IngredientName = styled.p`
@@ -85,6 +83,27 @@ const IngredientName = styled.p`
   font-size: 14px;
   line-height: 120%;
   letter-spacing: -0.03em;
+`;
+
+const SelectionCompleteBtn = styled.button`
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  background: #2e8cfe;
+  border-radius: 10px;
+  width: 328px;
+  height: 46px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  align-items: center;
+  text-align: center;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  &:disabled {
+    background: #a9a9a9;
+  }
 `;
 
 function Frige() {
@@ -114,25 +133,23 @@ function Frige() {
               {results.map((item) =>
                 searchInput === "" ? null : (
                   <div>
-                    {selectedIngredient.indexOf(item.title) === -1 ? (
+                    {selectedIngredient.indexOf(item) === -1 ? (
                       <IngredientItem
                         onClick={() =>
-                          setSelectedIngredient((prev) => [...prev, item.title])
+                          setSelectedIngredient((prev) => [...prev, item])
                         }
                       >
-                        <IngredientName>{item.title}</IngredientName>
+                        <IngredientName>{item}</IngredientName>
                       </IngredientItem>
                     ) : (
                       <SelectedIngredientItem
                         onClick={() =>
                           setSelectedIngredient((prev) =>
-                            [...prev].filter(
-                              (element) => element !== item.title
-                            )
+                            [...prev].filter((element) => element !== item)
                           )
                         }
                       >
-                        <IngredientName>{item.title}</IngredientName>
+                        <IngredientName>{item}</IngredientName>
                       </SelectedIngredientItem>
                     )}
                   </div>
@@ -142,7 +159,16 @@ function Frige() {
           )}
         />
       </FrigeSearchContainer>
-      <FrigeContainer></FrigeContainer>
+      <IngredientItemList>
+        <AllFrigeList />
+      </IngredientItemList>
+      {selectedIngredient.length === 0 ? (
+        <SelectionCompleteBtn disabled>선택 완료</SelectionCompleteBtn>
+      ) : (
+        <Link to={{ pathname: "/myfrige" }}>
+          <SelectionCompleteBtn>선택 완료</SelectionCompleteBtn>
+        </Link>
+      )}
     </>
   );
 }
