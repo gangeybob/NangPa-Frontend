@@ -1,4 +1,6 @@
-const colors = {};
+const colors = {
+  MAIN_COLOR: "#2E8CFE",
+};
 const mediaScreen = {};
 const fontSize = {};
 
