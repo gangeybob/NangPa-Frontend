@@ -5,6 +5,7 @@ import Search from "../pages/SearchPage/SearchIndex";
 import MyPage from "../pages/MyPage/MyPage";
 import Community from "../pages/CommunityPage/Community";
 import Frige from "../pages/FrigePage/Frige";
+import MyFrige from "../pages/MyFrigePage/MyFrige";
 
 const RootRoute = () => {
   return (
@@ -16,6 +17,7 @@ const RootRoute = () => {
         <Route path="/mypage" element={<MyPage />} />
         <Route path="/community" element={<Community />} />
         <Route path="/frige" element={<Frige />} />
+        <Route path="/myfrige" element={<MyFrige />} />
       </Routes>
     </BrowserRouter>
   );

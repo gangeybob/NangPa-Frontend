@@ -9,11 +9,11 @@ import AllFrigeList from "./AllFrigeList";
 
 let data = ["간장", "계란", "밥", "참기름", "버터"];
 
-const FrigeContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  padding: 0px 23px;
-`;
+// const FrigeContainer = styled.div`
+//   width: 100vw;
+//   height: 100vh;
+//   padding: 0px 23px;
+// `;
 
 const FrigeSearchContainer = styled.div`
   width: 100%;
