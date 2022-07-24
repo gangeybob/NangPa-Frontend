@@ -3,6 +3,7 @@ import { ReactComponent as Share } from "../../assets/share.svg";
 import { ReactComponent as Bookmark } from "../../assets/bookmark.svg";
 import { ReactComponent as Like } from "../../assets/like.svg";
 import IngredientTagList from "./IngredientTagList";
+import RecipeDetailItemList from "./RecipeDetailItemList";
 
 const RecipePhotoContainer = styled.div`
   position: relative;
@@ -17,6 +18,18 @@ const RecipePhoto = styled.img`
   transform: translateX(-50%);
   width: auto;
   height: 100%;
+`;
+
+const RecipePhotoGradient = styled.div`
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.37) 100%
+  );
 `;
 
 const SnsContainer = styled.div`
@@ -46,8 +59,6 @@ const ContentsContainer = styled.div`
 `;
 
 const RecipeTitle = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
   font-weight: 600;
   font-size: 22px;
   line-height: 120%;
@@ -58,8 +69,6 @@ const RecipeTitle = styled.p`
 
 const RecipeShortDescription = styled.p`
   margin: 0;
-  font-family: "SUIT";
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 120%;
@@ -74,13 +83,18 @@ const IngredientContainer = styled.div`
 `;
 
 const Subtitle = styled.p`
-  font-family: "SUIT";
-  font-style: normal;
   font-weight: 500;
   font-size: 16px;
   line-height: 120%;
   letter-spacing: -0.02em;
-  margin: 25px 0px 10px 0px;
+  margin: 22px 0px 12px 0px;
+`;
+
+const Border = styled.div`
+  background: rgba(35, 35, 35, 0.37);
+  width: 100%;
+  height: 1px;
+  margin: 32px 0px 20px 0px;
 `;
 
 function Detail() {
@@ -88,6 +102,7 @@ function Detail() {
     <>
       <RecipePhotoContainer>
         <RecipePhoto src="https://recipe1.ezmember.co.kr/cache/recipe/2020/12/06/c36207a3c0d453a4bc4eb14e19d5afb91.jpg" />
+        <RecipePhotoGradient />
       </RecipePhotoContainer>
       <ContentsContainer>
         <SnsContainer>
@@ -107,6 +122,8 @@ function Detail() {
           <Subtitle>식재료</Subtitle>
           <IngredientTagList />
         </IngredientContainer>
+        <RecipeDetailItemList />
+        <Border />
       </ContentsContainer>
     </>
   );
