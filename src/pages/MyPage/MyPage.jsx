@@ -47,7 +47,7 @@ const UserButtonGroup = styled.div`
 const Wrapping = styled.div``;
 
 function MyPage(props) {
-    const [show, setShow] = useState(false);
+    const [show, setShow] = useState(true);
     const handleShow = () => setShow(true);
 
     return (
