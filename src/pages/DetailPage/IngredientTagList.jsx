@@ -42,11 +42,11 @@ const UnSelectedIngredientTag = styled.div`
 
 function IngredientTagList() {
   const data = ["토마토", "계란", "식빵", "파슬리", "호밀빵", "후추"];
-  const setSelectedIngredientAtom = useSetRecoilState(selectedIngredientAtom);
+  //   const setSelectedIngredientAtom = useSetRecoilState(selectedIngredientAtom);
 
-  useEffect(() => {
-    setSelectedIngredientAtom(["토마토", "계란", "식빵"]);
-  }, [setSelectedIngredientAtom]);
+  //   useEffect(() => {
+  //     setSelectedIngredientAtom(["토마토", "계란", "식빵"]);
+  //   }, [setSelectedIngredientAtom]);
   const selectedIngredient = useRecoilValue(selectedIngredientAtom);
 
   return (
