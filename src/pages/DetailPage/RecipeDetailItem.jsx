@@ -5,6 +5,7 @@ const RecipeDetailPhotoContainer = styled.div`
   height: 181px;
   width: 100%;
   overflow: hidden;
+  border-radius: 10px;
 `;
 
 const RecipeDetailPhoto = styled.img`
@@ -35,7 +36,7 @@ function RecipeDetailItem({ description, src }) {
     <ItemContainer>
       {src !== undefined ? (
         <RecipeDetailPhotoContainer>
-          <RecipeDetailPhoto src={src}></RecipeDetailPhoto>
+          <RecipeDetailPhoto src={src} />
         </RecipeDetailPhotoContainer>
       ) : null}
       <RecipeDescriptionText>{description}</RecipeDescriptionText>

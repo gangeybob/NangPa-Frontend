@@ -44,7 +44,7 @@ const SearchBtn = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 15px 124px 15px 20px;
+  padding: 15px 0px 15px 20px;
   gap: 8px;
   position: absolute;
   width: 317px;
@@ -73,7 +73,7 @@ function Main() {
       <Link to={{ pathname: "/search" }}>
         <SearchBtn>
           <Search />
-          재료를 선택해주세요
+          냉장고를 비워볼까요?
         </SearchBtn>
       </Link>
     </Container>
