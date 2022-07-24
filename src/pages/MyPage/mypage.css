@@ -1,0 +1,93 @@
+.mypage-wrap {
+    position: relative;
+    background-color: #eee;
+    text-align: center;
+}
+
+/* .mypage-wrap::before {
+    content: '';
+    position: absolute;
+    width: 375px;
+    height: 521px;
+    left: 50%;
+    top: -225px;
+    background: #2e8cfe;
+    border-radius: 151.5px;
+    transform: translate(-50%, 0);
+} */
+
+.mypage-wrap.profile-info-wrap {
+    font-family: 'SUIT';
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    text-align: center;
+    letter-spacing: -0.05em;
+    color: #232323;
+}
+
+.mypage-wrap .btn-profile {
+    padding: 6px 16px;
+    margin: 0 5.5px;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: -0.05em;
+    color: #ffffff;
+    background: #2e8cfe;
+    border-radius: 20px;
+}
+
+.mypage-wrap .btn-error-modal {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 20px;
+}
+
+.error-modal {
+    min-height: 425px;
+    padding: 21px;
+}
+.error-modal .modal-header {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.error-modal .modal-title {
+    position: relative;
+    margin: 0 auto;
+    padding-top: calc(48px + 120px);
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 120%;
+    text-align: center;
+    letter-spacing: -0.05em;
+    color: #232323;
+}
+.error-modal .modal-title::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #d9d9d9;
+    transform: translate(-50%, -50%);
+}
+
+.error-modal .modal-body {
+    margin-top: 13px;
+    padding-top: 0;
+    font-family: 'SUIT';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: center;
+    letter-spacing: -0.05em;
+    color: #232323;
+}
