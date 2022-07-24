@@ -1,4 +1,3 @@
-import RecipeDetailItem from "./RecipeDetailItem";
 import styled from "styled-components";
 
 const StyledText = styled.p`
@@ -6,32 +5,30 @@ const StyledText = styled.p`
   font-size: 16px;
   line-height: 120%;
   letter-spacing: -0.02em;
-  margin: 25px 0px 0px 0px;
+  margin: 25px 23px 0px 23px;
 `;
 
 const RecipeReviewPhotoSwiper = styled.div`
+  gap: 10px;
   display: flex;
   overflow-x: scroll;
-  width: 100%;
-`;
-
-const RecipeReviewPhotoContainer = styled.div`
-  height: 123px;
-  width: 158px;
-  overflow: hidden;
+  padding-left: 23px;
+  margin: 12px 0px 80px 0px;
 `;
 
 const RecipeReviewPhoto = styled.img`
+  height: 123px;
+  width: 158px;
   object-fit: cover;
 `;
 
 const reviewMockData = [
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    src: "https://static.wtable.co.kr/image-resize/production/service/recipe/121/16x9/17715671-f763-4f85-ad7e-2b10097b77fb.jpg",
   },
 
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    src: "https://recipe1.ezmember.co.kr/cache/recipe/2018/12/12/6d6941d611d34c90c5dc19f4d67c857a1.jpg",
   },
 
   {
@@ -63,9 +60,9 @@ function RecipeReviewList() {
       <RecipeReviewPhotoSwiper>
         {reviewMockData.map((item) => {
           return (
-            <RecipeReviewPhotoContainer>
+            <div>
               <RecipeReviewPhoto src={item.src} />
-            </RecipeReviewPhotoContainer>
+            </div>
           );
         })}
       </RecipeReviewPhotoSwiper>

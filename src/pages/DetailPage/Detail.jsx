@@ -125,8 +125,8 @@ function Detail() {
         </IngredientContainer>
         <RecipeDetailItemList />
         <Border />
-        <RecipeReviewList />
       </ContentsContainer>
+      <RecipeReviewList />
     </>
   );
 }

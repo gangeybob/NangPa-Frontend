@@ -5,6 +5,7 @@ const RecipeDetailPhotoContainer = styled.div`
   height: 181px;
   width: 100%;
   overflow: hidden;
+  border-radius: 10px;
 `;
 
 const RecipeDetailPhoto = styled.img`
