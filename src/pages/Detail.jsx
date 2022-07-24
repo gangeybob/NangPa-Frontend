@@ -74,40 +74,42 @@ const IngredientContainer = styled.div`
 `;
 
 const Subtitle = styled.p`
-    font-family: 'SUIT';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 120%;
-    letter-spacing: -0.02em;
+  font-family: "SUIT";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  margin: 25px 0px 10px 0px;
 `;
 
 function Detail() {
-    return (
-        <>
-            <RecipePhotoContainer>
-                <RecipePhoto src='https://recipe1.ezmember.co.kr/cache/recipe/2020/12/06/c36207a3c0d453a4bc4eb14e19d5afb91.jpg' />
-            </RecipePhotoContainer>
-            <ContentsContainer>
-                <SnsContainer>
-                    <LikeWrapper>
-                        <Like />
-                        <LikeCount>14k</LikeCount>
-                    </LikeWrapper>
-                    <BtnContainer>
-                        <Share />
-                        <Bookmark />
-                    </BtnContainer>
-                </SnsContainer>
-                <RecipeTitle>여름을 책임질 신선한 간장계란밥!</RecipeTitle>
-                <RecipeShortDescription>작은설명이 들어갈수있게</RecipeShortDescription>
-                <IngredientContainer>
-                    <Subtitle>식재료</Subtitle>
-                    <IngredientTagList />
-                </IngredientContainer>
-            </ContentsContainer>
-        </>
-    );
+  return (
+    <>
+      <RecipePhotoContainer>
+        <RecipePhoto src="https://recipe1.ezmember.co.kr/cache/recipe/2020/12/06/c36207a3c0d453a4bc4eb14e19d5afb91.jpg" />
+      </RecipePhotoContainer>
+      <ContentsContainer>
+        <SnsContainer>
+          <LikeWrapper>
+            <Like />
+            {/* 좋아요버튼 기능구현 필요 */}
+            <LikeCount>14k</LikeCount>
+          </LikeWrapper>
+          <BtnContainer>
+            <Share />
+            <Bookmark />
+          </BtnContainer>
+        </SnsContainer>
+        <RecipeTitle>여름을 책임질 신선한 간장계란밥!</RecipeTitle>
+        <RecipeShortDescription>작은설명이 들어갈수있게</RecipeShortDescription>
+        <IngredientContainer>
+          <Subtitle>식재료</Subtitle>
+          <IngredientTagList />
+        </IngredientContainer>
+      </ContentsContainer>
+    </>
+  );
 }
 
 export default Detail;
