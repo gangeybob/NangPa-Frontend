@@ -9,14 +9,22 @@ const Navigation = () => {
       <Link to={"/"}>
         <StyledMyIconHome></StyledMyIconHome>
       </Link>
+      <Link to={"/frige"}>
+        <StyledMyIconHome></StyledMyIconHome>
+      </Link>
     </Container>
   );
 };
 
 export default Navigation;
 const Container = styled.div`
+  width: 100%;
   position: fixed;
   bottom: 0;
+  height: 64px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
 `;
 
 const StyledMyIconHome = styled(Home)``;
