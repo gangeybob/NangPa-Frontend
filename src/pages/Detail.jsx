@@ -82,6 +82,7 @@ const Subtitle = styled.p`
   font-size: 16px;
   line-height: 120%;
   letter-spacing: -0.02em;
+  margin: 25px 0px 10px 0px;
 `;
 
 function Detail() {
@@ -94,6 +95,7 @@ function Detail() {
         <SnsContainer>
           <LikeWrapper>
             <Like />
+            {/* 좋아요버튼 기능구현 필요 */}
             <LikeCount>14k</LikeCount>
           </LikeWrapper>
           <BtnContainer>
