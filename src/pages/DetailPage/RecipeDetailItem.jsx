@@ -35,7 +35,7 @@ function RecipeDetailItem({ description, src }) {
     <ItemContainer>
       {src !== undefined ? (
         <RecipeDetailPhotoContainer>
-          <RecipeDetailPhoto src={src}></RecipeDetailPhoto>
+          <RecipeDetailPhoto src={src} />
         </RecipeDetailPhotoContainer>
       ) : null}
       <RecipeDescriptionText>{description}</RecipeDescriptionText>

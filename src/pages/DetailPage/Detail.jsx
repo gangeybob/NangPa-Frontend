@@ -4,6 +4,7 @@ import { ReactComponent as Bookmark } from "../../assets/bookmark.svg";
 import { ReactComponent as Like } from "../../assets/like.svg";
 import IngredientTagList from "./IngredientTagList";
 import RecipeDetailItemList from "./RecipeDetailItemList";
+import RecipeReviewList from "./RecipeReviewList";
 
 const RecipePhotoContainer = styled.div`
   position: relative;
@@ -124,6 +125,7 @@ function Detail() {
         </IngredientContainer>
         <RecipeDetailItemList />
         <Border />
+        <RecipeReviewList />
       </ContentsContainer>
     </>
   );
