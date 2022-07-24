@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../assets/search.svg";
-import { selectedIngredientAtom } from "../../atom";
+import { myFrigeAtom } from "../../atom";
 import AllFrigeList from "./AllFrigeList";
 
 let data = ["간장", "계란", "밥", "참기름", "버터"];
@@ -108,10 +108,8 @@ const SelectionCompleteBtn = styled.button`
 
 function Frige() {
   const [searchInput, setSearchInput] = useState("");
-  const [selectedIngredient, setSelectedIngredient] = useRecoilState(
-    selectedIngredientAtom
-  );
-  console.log(selectedIngredient);
+  const [myFrige, setMyFrige] = useRecoilState(myFrigeAtom);
+  console.log(myFrige);
   return (
     <>
       <FrigeSearchContainer>
@@ -133,18 +131,16 @@ function Frige() {
               {results.map((item) =>
                 searchInput === "" ? null : (
                   <div>
-                    {selectedIngredient.indexOf(item) === -1 ? (
+                    {myFrige.indexOf(item) === -1 ? (
                       <IngredientItem
-                        onClick={() =>
-                          setSelectedIngredient((prev) => [...prev, item])
-                        }
+                        onClick={() => setMyFrige((prev) => [...prev, item])}
                       >
                         <IngredientName>{item}</IngredientName>
                       </IngredientItem>
                     ) : (
                       <SelectedIngredientItem
                         onClick={() =>
-                          setSelectedIngredient((prev) =>
+                          setMyFrige((prev) =>
                             [...prev].filter((element) => element !== item)
                           )
                         }
@@ -162,7 +158,7 @@ function Frige() {
       <IngredientItemList>
         <AllFrigeList />
       </IngredientItemList>
-      {selectedIngredient.length === 0 ? (
+      {myFrige.length === 0 ? (
         <SelectionCompleteBtn disabled>선택 완료</SelectionCompleteBtn>
       ) : (
         <Link to={{ pathname: "/myfrige" }}>

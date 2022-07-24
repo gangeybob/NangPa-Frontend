@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { selectedIngredientAtom } from "../../atom";
+import { myFrigeAtom } from "../../atom";
 
 const MyFrigeContainer = styled.div`
   display: flex;
@@ -58,9 +58,7 @@ const MyFrigeName = styled.p`
 `;
 
 function MyFrige() {
-  const [selectedIngredient, setSelectedIngredient] = useRecoilState(
-    selectedIngredientAtom
-  );
+  const [myFrige, setMyFrigeAtom] = useRecoilState(myFrigeAtom);
   return (
     <MyFrigeContainer>
       <MyFrigeSubtitle>
@@ -68,7 +66,7 @@ function MyFrige() {
       </MyFrigeSubtitle>
       <MyFrigeTitle>셰프의 냉장고 ❄️</MyFrigeTitle>
       <MyFrigeListContainer>
-        {selectedIngredient.map((item) => (
+        {myFrige.map((item) => (
           <MyFrigeItem>
             <MyFrigeName>{item}</MyFrigeName>
           </MyFrigeItem>

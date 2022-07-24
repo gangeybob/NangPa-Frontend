@@ -1,6 +1,6 @@
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { selectedIngredientAtom } from "../../atom";
+import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
 
 const data = [
   "쌀",
@@ -95,23 +95,19 @@ const AllFrigeListContainer = styled.div`
 `;
 
 function AllFrigeList() {
-  const [selectedIngredient, setSelectedIngredient] = useRecoilState(
-    selectedIngredientAtom
-  );
+  const [myFrige, setMyFrige] = useRecoilState(myFrigeAtom);
 
   return (
     <AllFrigeListContainer>
       {data.map((item) =>
-        selectedIngredient.indexOf(item) === -1 ? (
-          <IngredientItem
-            onClick={() => setSelectedIngredient((prev) => [...prev, item])}
-          >
+        myFrige.indexOf(item) === -1 ? (
+          <IngredientItem onClick={() => setMyFrige((prev) => [...prev, item])}>
             <IngredientName>{item}</IngredientName>
           </IngredientItem>
         ) : (
           <SelectedIngredientItem
             onClick={() =>
-              setSelectedIngredient((prev) =>
+              setMyFrige((prev) =>
                 [...prev].filter((element) => element !== item)
               )
             }
