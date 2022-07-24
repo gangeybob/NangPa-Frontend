@@ -30,9 +30,11 @@ const SelectTitle = styled.h3`
 `;
 
 const SelectedItemWrap = styled.div`
+    margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 0.5px solid rgba(73, 73, 73, 0.4);
 `;
+
 const SelectItemArea = styled.h3`
     height: 165px;
     padding: 17px 19px;
@@ -81,17 +83,15 @@ function SearchIndex() {
                     />
                 </Col>
             </Row>
-            <Row xs={12} className='mt-auto '>
-                <Col xs={12}>
-                    <SelectTitle className='text'>선택한 재료</SelectTitle>
-                    <SelectedItemWrap></SelectedItemWrap>
-                </Col>
-            </Row>
-
-            <Row xs={12} className='mt-auto'>
+            <Row xs={12} className='mt-auto d-flex flex-column-reverse'>
                 <Col xs={12}>
                     <SelectTitle className='mt-20 mb-12 text'>내 냉장고</SelectTitle>
                     <SelectItemArea className='w-100'>냉장고 버튼을 눌러서 냉장고 내 재료를 채워주세요</SelectItemArea>
+                </Col>
+                <Col xs={12}>
+                    <SelectTitle className='text'>선택한 재료</SelectTitle>
+                    {/* TODO: 선택한 재료가 있는 경우/없는 경우*/}
+                    <SelectedItemWrap></SelectedItemWrap>
                 </Col>
             </Row>
             {/* TODO: 검색 결과 화면 */}
