@@ -1,17 +1,47 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import AddFoodButton from "../components/addFoodButton";
 import FilterButton from "../components/filterButton";
-import FoodButton from "../components/foodButton";
 import GoBackButton from "../components/goBackButton";
 import { ReactComponent as Heart } from "../assets/shape.svg";
 import { useScroll } from "../hooks/useScroll";
+import axios from "axios";
+import { selectedIngredientAtom } from "../atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import FoodButtonAlone from "../components/foodButtonAlone";
+import { useNavigate } from "react-router-dom";
 
 const ResultList = () => {
   const [byPopularState, setByPopularState] = useState(true);
   // const [mainTextIs, setMainTextIs] = useState(true);
   const [scrollLocation, setScrollLocation] = useState(0);
+  const [selectedIngredient, setSelectedIngredient] = useRecoilState(
+    selectedIngredientAtom
+  );
+  const [foodData, setFoodData] = useState([]);
+  const [foodList, setFoodList] = useState([...selectedIngredient]);
 
+  console.log(foodList, selectedIngredient);
+  console.log(foodData);
+  let abc = useRef();
+  useEffect(() => {
+    abc.current = [...selectedIngredient];
+    axios({
+      method: "POST",
+      url: "https://naengpa.herokuapp.com/recipe/getRecipeList",
+      data: {
+        irdntNms: [...selectedIngredient],
+      },
+      headers: { contentType: "application/json" },
+    })
+      .then((res) => {
+        setFoodData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        throw new Error(error);
+      });
+  }, []);
   const { scrollY } = useScroll();
   useEffect(() => {});
   const observeroption = {
@@ -25,32 +55,7 @@ const ResultList = () => {
     });
   };
   const observer = new IntersectionObserver(observerCallback, observeroption);
-  const list = ["계란", "토마토", "식빵", "마늘", "adad", "DAda"];
-  const recipeList = [
-    {
-      text: "여름을 책임질 신선한 샌드위치!",
-      id: 1,
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3B5XVzMn2C1ClhE_s1rtYuYm7QXFnqz4wHw&usqp=CAU",
-    },
-    {
-      text: "입맛없을 떈 초달달 토마토 달걀볶음",
-      id: 2,
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3B5XVzMn2C1ClhE_s1rtYuYm7QXFnqz4wHw&usqp=CAU",
-    },
-    {
-      text: "입맛없을 떈 초달달 토마토 달걀볶음",
-      id: 3,
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3B5XVzMn2C1ClhE_s1rtYuYm7QXFnqz4wHw&usqp=CAU",
-    },
-    {
-      text: "입맛없을 떈 초달달 토마토 달걀볶음",
-      id: 4,
-      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3B5XVzMn2C1ClhE_s1rtYuYm7QXFnqz4wHw&usqp=CAU",
-    },
-  ];
-  const [foodList, setFoodList] = useState(list);
-  const [like, setLike] = useState(130);
-  const [likeClicked, setLikeClicked] = useState(false);
+
   const handleByPopular = () => {
     setByPopularState(true);
   };
@@ -59,17 +64,14 @@ const ResultList = () => {
     setByPopularState(false);
   };
   const handleDelete = (e) => {
-    setFoodList(foodList.filter((item) => item !== e.target.outerText));
+    setFoodList([foodList].filter((item) => item !== e.target.outerText));
   };
-  const handleLike = () => {
-    setLikeClicked(likeClicked ? false : true);
-    if (likeClicked) {
-      setLike(like + 1);
-    } else {
-      setLike(like - 1);
-    }
+
+  const navigate = useNavigate();
+  const clickHistoryData = (e) => {
+    console.log(e.target.id);
+    navigate(`/${e.target.id}/detail`, { replace: false, state: e.target.id });
   };
-  const clickHistoryData = () => {};
   return (
     <ResultListWrapper>
       <HeaderContainer>
@@ -78,34 +80,53 @@ const ResultList = () => {
           <FilterButton></FilterButton>
         </ButtonIconContainer>
         <TitleWhoIs scrollY={scrollY}>
-          웬디님의 재료로 만들 수 있는<br></br>멋진 요리들이에요
+          셰프의 재료로 만들 수 있는<br></br>멋진 요리들이에요{" "}
+          <img
+            width={25}
+            height={25}
+            alt=""
+            src="https://ifh.cc/g/bkxs4R.png"
+          ></img>
         </TitleWhoIs>
         <TitleChosen>선택한 재료</TitleChosen>
         <FoodListWrapper>
           <AddFoodButton></AddFoodButton>
-          {foodList.map((item) => (
-            <FoodButton handleDelete={handleDelete} item={item}></FoodButton>
+          {selectedIngredient.map((item) => (
+            <FoodButtonAlone
+              handleDelete={handleDelete}
+              item={item}
+            ></FoodButtonAlone>
           ))}
         </FoodListWrapper>
       </HeaderContainer>
       <MainContainer>
         <SortingLetter byPopularState={byPopularState}>
-          <button onClick={handleByPopular} className="byPopular">
+          <button
+            byPopularState={byPopularState}
+            onClick={handleByPopular}
+            className="byPopular"
+          >
             인기순
           </button>
-          <button onClick={handleByCorrect} className="byCorrect">
+          <button
+            byPopularState={byPopularState}
+            onClick={handleByCorrect}
+            className="byCorrect"
+          >
             최신순
           </button>
         </SortingLetter>
         <ListContainer>
-          {recipeList.map((item) => (
-            <TextWrapper>
-              <img onClick={clickHistoryData} src={item.src} alt="" />
-              <ListSpan>{item.text}</ListSpan>
-              <IconWrapper onClick={handleLike}>
-                <StyledMyIcon></StyledMyIcon>
-                <span>{like}</span>
-              </IconWrapper>
+          {foodData.map((item) => (
+            <TextWrapper onClick={clickHistoryData} id={item.recipeId}>
+              <img src={item.imgUrl} alt="" />
+              <SummaryAndLike>
+                <ListSpan>{item.summary}</ListSpan>
+                <IconWrapper>
+                  <StyledMyIcon></StyledMyIcon>
+                  <span>{item.likeCnt}</span>
+                </IconWrapper>
+              </SummaryAndLike>
             </TextWrapper>
           ))}
         </ListContainer>
@@ -128,8 +149,10 @@ const HeaderContainer = styled.div`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   width: 100%;
   position: fixed;
+  width: 375px;
   top: 0px;
   padding-top: 10px;
+  padding-right: 10px;
   background-color: white;
 `;
 
@@ -147,6 +170,9 @@ const TitleWhoIs = styled.div`
   font-weight: 500;
   font-size: 24px;
   line-height: 120%;
+  img {
+    transform: translateY(-20%);
+  }
 `;
 
 const TitleChosen = styled.div`
@@ -170,10 +196,18 @@ const SortingLetter = styled.div`
   margin: 10px 0;
   text-align: end;
   .byPopular {
-    color: ${({ byPopularState }) => (byPopularState ? "black" : "#989898")};
+    color: ${({ byPopularState }) => (byPopularState ? "#2E8CFE" : "#989898")};
+    background-color: ${({ byPopularState }) =>
+      byPopularState ? "#E4F0FF" : "transparent"};
+    padding: 5px 10px;
+    border-radius: 10px;
   }
   .byCorrect {
-    color: ${({ byPopularState }) => (byPopularState ? "#989898" : "black")};
+    color: ${({ byPopularState }) => (byPopularState ? "#989898" : "#2E8CFE")};
+    background-color: ${({ byPopularState }) =>
+      byPopularState ? "transparent" : "#E4F0FF"};
+    padding: 5px 10px;
+    border-radius: 10px;
   }
 `;
 
@@ -187,12 +221,32 @@ const TextWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 20px;
+  cursor: pointer;
+  img {
+    width: 326px;
+    height: 184px;
+    border-radius: 10px;
+    pointer-events: none;
+    margin-bottom: 12px;
+  }
 `;
-const ListSpan = styled.div``;
+const ListSpan = styled.div`
+  font-size: 14px;
+  font-weight: 600;
+`;
 
 const StyledMyIcon = styled(Heart)``;
 const IconWrapper = styled.div`
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: 14px;
   span {
-    margin-left: 5px;
+    margin-left: 4px;
   }
+`;
+
+const SummaryAndLike = styled.div`
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
 `;

@@ -19,15 +19,6 @@ import { useRecoilState } from "recoil";
 import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
 import FrigeButton from "../../components/frigeButton";
 
-// TODO : Change dummy
-// let data = [
-//   { id: 1, title: "계란" },
-//   { id: 2, title: "간장" },
-//   { id: 3, title: "밥" },
-//   { id: 4, title: "참기름" },
-//   { id: 5, title: "버터" },
-// ];
-
 const RefridgeTitle = styled.h2`
   margin-top: 15px;
   margin-bottom: 19px;
@@ -35,6 +26,9 @@ const RefridgeTitle = styled.h2`
   font-size: 24px;
   line-height: 30px;
   letter-spacing: -0.165px;
+  img {
+    transform: translateY(-20%);
+  }
 `;
 const SelectTitle = styled.h3`
   margin-bottom: 6px;
@@ -43,13 +37,11 @@ const SelectTitle = styled.h3`
   line-height: 17px;
   letter-spacing: -0.165px;
 `;
-
 const SelectedItemWrap = styled.div`
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 0.5px solid rgba(73, 73, 73, 0.4);
 `;
-
 const SelectItemArea = styled.h3`
   height: 165px;
   padding: 17px 19px;
@@ -75,6 +67,7 @@ const FormControlWrapper = styled.div`
   position: relative;
 `;
 const StyledMyIcon = styled(searchXButton)`
+  display: ${({ searchInput }) => (searchInput ? "block" : "none")};
   cursor: pointer;
   position: absolute;
   right: 15px;
@@ -88,22 +81,6 @@ function SearchIndex() {
   const [viewMyFrigeAtom, setViewMyFrigeAtom] = useRecoilState(myFrigeAtom);
   console.log(viewMyFrigeAtom);
 
-  // useEffect(()=>{
-  //   axios({
-  //     method: "POST",
-  //     url: "https://naengpa.herokuapp.com/recipe/getRecipeList",
-  //     data: {
-  //       irdntNms: [["콩나물", "소금"]],
-  //     },
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //       throw new Error(error);
-  //     });
-  // },[])
   useEffect(() => {
     axios
       .get("https://naengpa.herokuapp.com/recipe/getIrdnt")
@@ -123,6 +100,7 @@ function SearchIndex() {
   }, [searchInput]);
   const addListClick = (e) => {
     setSelectedIngredient([...selectedIngredient, e.target.outerText]);
+    console.log(selectedIngredient);
   };
   const handleDelete = (e) => {
     console.log(e);
@@ -140,6 +118,7 @@ function SearchIndex() {
   };
   const handleAdd = (e) => {
     setSelectedIngredient([...selectedIngredient, e.target.outerText]);
+    console.log(selectedIngredient);
   };
   return (
     <Container className="min-vh-100 d-flex flex-column search_wrap">
@@ -148,7 +127,13 @@ function SearchIndex() {
           <RefridgeTitle>
             요리에 사용할 재료를
             <br />
-            선택해주세요.
+            선택해주세요.{" "}
+            <img
+              alt=""
+              width={25}
+              height={25}
+              src="https://ifh.cc/g/4lkTwh.png"
+            ></img>
           </RefridgeTitle>
           <FormControlWrapper>
             <FormControl
@@ -157,11 +142,14 @@ function SearchIndex() {
               value={searchInput}
               onChange={handleChangingSearch}
             />
-            <StyledMyIcon onClick={handleXButton}></StyledMyIcon>
+            <StyledMyIcon
+              searchInput={searchInput}
+              onClick={handleXButton}
+            ></StyledMyIcon>
           </FormControlWrapper>
           <SearchFilter
             value={searchInput}
-            data={data}
+            data={searchInput ? data : []}
             renderResults={(results) => (
               <ListGroup className="search-list d-inline-flex justify-cotent-start align-items-center flex-wrap">
                 {results.map((item) => (
@@ -221,5 +209,4 @@ function SearchIndex() {
     </Container>
   );
 }
-
 export default SearchIndex;
