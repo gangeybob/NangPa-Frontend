@@ -44,6 +44,7 @@ const MyFrigeListContainer = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   overflow-y: scroll;
+  align-content: flex-start;
 `;
 
 const MyFrigeItem = styled.button`
@@ -88,6 +89,7 @@ const SelectionCompleteBtn = styled.button`
 
   &:disabled {
     background: #a9a9a9;
+    box-shadow: 0px 3px 10px #a0a0a0;
   }
 `;
 
