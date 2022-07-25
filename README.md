@@ -51,8 +51,9 @@
 <br>
 
 ## :construction_worker: 함께한 사람들
+#프론트엔드
 
-|                                  bee                                  |                               SeungMo Kim                                |  
+|                                  bee                                  |                               SeungMo Kim(PL)                            | 
 | :-------------------------------------------------------------------: | :----------------------------------------------------------------------: |
 |                [@holabee](https://github.com/holabee)                 |              [@endmoseung](https://github.com/endmoseung)                |
 | <img src="https://avatars.githubusercontent.com/holabee" width="100"> | <img src="https://avatars.githubusercontent.com/endmoseung" width="100"> |
