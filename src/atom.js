@@ -4,11 +4,6 @@ export const selectedIngredientAtom = atom({
   default: [],
 });
 
-export const myFrigeAtom = atom({
-  key: "myFrige",
-  default: [],
-});
-
 export const viewedRecipeAtom = atom({
   key: "viewedRecipe",
   default: [],
