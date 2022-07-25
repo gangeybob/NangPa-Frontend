@@ -44,7 +44,9 @@ const UserButtonGroup = styled.div`
     justify-content: space-evenly;
 `;
 
-const Wrapping = styled.div``;
+const Wrapping = styled.div`
+    margin: -9px;
+`;
 
 function MyPage(props) {
     const [show, setShow] = useState(true);
@@ -71,9 +73,7 @@ function MyPage(props) {
                             <Button className='btn-profile'>안 매운 음식</Button>
                         </UserButtonGroup>
                     </ProfileWrap>
-                </Col>
-                <Col xs={12}>
-                    <Wrapping className='d-flex flex-wrap align-items-center justify-content-xxl-start'>
+                    <Wrapping className='d-flex flex-wrap'>
                         {/* TODO : link 로 가야되나 지금은 그냥.... modal 그냥 띄어주려고 react-bootstrap의 button */}
                         <Button variant='white' onClick={handleShow} className='btn-error-modal w-50 h-100'>
                             냉파
@@ -85,9 +85,6 @@ function MyPage(props) {
                             <br />
                             달력
                         </Button>
-                    </Wrapping>
-                    <Wrapping className='d-flex flex-wrap align-items-center justify-content-xxl-start'>
-                        {/* TODO : link 로 가야되나 지금은 그냥.... modal 그냥 띄어주려고 react-bootstrap의 button */}
                         <Button variant='white' onClick={handleShow} className='btn-error-modal w-50 h-100'>
                             냉파
                             <br />
