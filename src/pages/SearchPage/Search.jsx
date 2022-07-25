@@ -18,7 +18,7 @@ import Navigation from "../../components/navigation";
 import { useRecoilState } from "recoil";
 import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
 import FrigeButton from "../../components/frigeButton";
-
+//ada
 const RefridgeTitle = styled.h2`
   margin-top: 15px;
   margin-bottom: 19px;
