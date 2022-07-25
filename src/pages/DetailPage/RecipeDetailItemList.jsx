@@ -9,36 +9,31 @@ const StyledText = styled.p`
   margin: 25px 0px 0px 0px;
 `;
 
-function RecipeDetailItemList() {
-  const mockdata = [
-    {
-      description: "1. 계란을 굽는다.",
-      src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
-    },
+const RecipeDetailItemContainer = styled.div`
+  border-bottom: 0.5px solid rgba(46, 140, 254, 0.3);
+`;
 
-    {
-      description: "2. 밥을 짓는다.",
-      src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
-    },
+const RecipeDetailItemListContainer = styled.div`
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 0 27px;
+`;
 
-    {
-      description: "3. 참기름을 넣는다.",
-      src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
-    },
-    {
-      description: "4. 비빈다",
-    },
-  ];
-
+function RecipeDetailItemList({ recipeDescription }) {
   return (
-    <>
+    <RecipeDetailItemListContainer>
       <StyledText>레시피</StyledText>
-      {mockdata.map((item) => {
+      {recipeDescription?.map((item) => {
         return (
-          <RecipeDetailItem description={item.description} src={item.src} />
+          <RecipeDetailItemContainer>
+            <RecipeDetailItem
+              description={item.cookingDc}
+              src={item.streStepImgUrl}
+              no={item.cookingNo}
+            />
+          </RecipeDetailItemContainer>
         );
       })}
-    </>
+    </RecipeDetailItemListContainer>
   );
 }
 

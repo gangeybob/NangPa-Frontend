@@ -59,7 +59,7 @@ const BtnContainer = styled.div`
 `;
 
 const ContentsContainer = styled.div`
-  margin: 19px 27px;
+  padding: 19px 27px 0 27px;
   display: flex;
   flex-direction: column;
 `;
@@ -122,12 +122,13 @@ function Detail() {
       setRecipeDetail(json);
     })();
   }, [recipeDetail, recipeId]);
-  console.log(recipeDetail);
 
-  const recipeName = recipeDetail.recipeInfo.recipeNmKo;
-  const recipeSummary = recipeDetail.recipeInfo.summary;
-  const recipeImg = recipeDetail.recipeInfo.imgUrl;
-  const recipeIrdnts = recipeDetail.recipeIrdnts;
+  const recipeName = recipeDetail?.recipeInfo?.recipeNmKo;
+  const recipeSummary = recipeDetail?.recipeInfo?.summary;
+  const recipeImg = recipeDetail?.recipeInfo?.imgUrl;
+  const recipeIrdnts = recipeDetail?.recipeIrdnts;
+  const recipeDescription = recipeDetail?.recipeCrses;
+
   return (
     <>
       <RecipePhotoContainer>
@@ -135,25 +136,14 @@ function Detail() {
         <RecipePhotoGradient />
       </RecipePhotoContainer>
       <ContentsContainer>
-        {/* <SnsContainer>
-          <LikeWrapper>
-            <Like />
-            <LikeCount>14k</LikeCount>
-          </LikeWrapper>
-          <BtnContainer>
-            <Share />
-            <Bookmark />
-          </BtnContainer>
-        </SnsContainer> */}
         <RecipeTitle>{recipeName}</RecipeTitle>
         <RecipeShortDescription>{recipeSummary}</RecipeShortDescription>
         <IngredientContainer>
           <Subtitle>레시피 재료</Subtitle>
           <IngredientTagList recipeIrdnts={recipeIrdnts} />
         </IngredientContainer>
-        <RecipeDetailItemList />
-        <Border />
       </ContentsContainer>
+      <RecipeDetailItemList recipeDescription={recipeDescription} />
       <RecipeReviewList />
     </>
   );

@@ -89,6 +89,7 @@ const SelectionCompleteBtn = styled.button`
 
   &:disabled {
     background: #a9a9a9;
+    box-shadow: 0px 3px 10px #a0a0a0;
   }
 `;
 

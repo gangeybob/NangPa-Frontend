@@ -51,7 +51,7 @@ function IngredientTagList({ recipeIrdnts }) {
 
   return (
     <StyledIngredientTagList>
-      {recipeIrdnts.map((item) => {
+      {recipeIrdnts?.map((item) => {
         for (let x of selectedIngredient) {
           if (x === item.irdntNm) {
             return (
