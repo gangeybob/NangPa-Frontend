@@ -2,63 +2,6 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
 
-const data = [
-  "쌀",
-  "안심",
-  "콩나물",
-  "청포묵",
-  "간장",
-  "계란",
-  "밥",
-  "참기름",
-  "버터",
-  "쌀",
-  "안심",
-  "콩나물",
-  "청포묵",
-  "간장",
-  "계란",
-  "밥",
-  "참기름",
-  "버터",
-  "쌀",
-  "안심",
-  "콩나물",
-  "청포묵",
-  "간장",
-  "계란",
-  "밥",
-  "참기름",
-  "버터",
-  "쌀",
-  "안심",
-  "콩나물",
-  "청포묵",
-  "간장",
-  "계란",
-  "밥",
-  "참기름",
-  "버터",
-  "쌀",
-  "안심",
-  "콩나물",
-  "청포묵",
-  "간장",
-  "계란",
-  "밥",
-  "참기름",
-  "버터",
-  "쌀",
-  "안심",
-  "콩나물",
-  "청포묵",
-  "간장",
-  "계란",
-  "밥",
-  "참기름",
-  "버터",
-];
-
 const IngredientItem = styled.button`
   height: 37px;
   border: 1px solid #a9a9a9;
@@ -88,31 +31,35 @@ const IngredientName = styled.p`
 
 const AllFrigeListContainer = styled.div`
   width: 100%;
-  padding: 70px 23px 0px 23px;
+  padding: 30px 28px 30px 28px;
   flex-wrap: wrap;
   display: flex;
   gap: 8px;
+  overflow-y: scroll;
+  height: 480px;
 `;
 
-function AllFrigeList() {
+function AllFrigeList({ irdnt }) {
   const [myFrige, setMyFrige] = useRecoilState(myFrigeAtom);
 
   return (
     <AllFrigeListContainer>
-      {data.map((item) =>
-        myFrige.indexOf(item) === -1 ? (
-          <IngredientItem onClick={() => setMyFrige((prev) => [...prev, item])}>
-            <IngredientName>{item}</IngredientName>
+      {irdnt.map((item) =>
+        myFrige.indexOf(item.title) === -1 ? (
+          <IngredientItem
+            onClick={() => setMyFrige((prev) => [...prev, item.title])}
+          >
+            <IngredientName>{item.title}</IngredientName>
           </IngredientItem>
         ) : (
           <SelectedIngredientItem
             onClick={() =>
               setMyFrige((prev) =>
-                [...prev].filter((element) => element !== item)
+                [...prev].filter((element) => element !== item.title)
               )
             }
           >
-            <IngredientName>{item}</IngredientName>
+            <IngredientName>{item.title}</IngredientName>
           </SelectedIngredientItem>
         )
       )}
