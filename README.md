@@ -52,7 +52,7 @@
 
 ## :construction_worker: 함께한 사람들
 
-|                                  bee                                  |     |
-| :-------------------------------------------------------------------: | :-: |
-|                [@holabee](https://github.com/holabee)                 |     |
-| <img src="https://avatars.githubusercontent.com/holabee" width="100"> |     |
+|                                  bee                                  |  SeungMo Kim                                                               |
+| :-------------------------------------------------------------------: | :------------------------------------------------------------------------: |
+|                [@holabee](https://github.com/holabee)                 |  [@endmoseung](https://github.com/endmoseung)                              |
+| <img src="https://avatars.githubusercontent.com/holabee" width="100"> | <img src="https://avatars.githubusercontent.com/endmoseung" width="100"    |
