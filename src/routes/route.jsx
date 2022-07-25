@@ -10,7 +10,7 @@ import ResultList from "../pages/resultList";
 
 const RootRoute = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/:recipeId/detail" element={<Detail />} />

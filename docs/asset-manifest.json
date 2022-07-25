@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/NangPa-Frontend/static/css/main.e537b35d.css",
-    "main.js": "/NangPa-Frontend/static/js/main.cd6476fd.js",
+    "main.js": "/NangPa-Frontend/static/js/main.3021180c.js",
     "static/media/SUIT-Variable.woff2": "/NangPa-Frontend/static/media/SUIT-Variable.6aeca9ac22a5ad0a00b6.woff2",
     "static/media/Filter.svg": "/NangPa-Frontend/static/media/Filter.fcd42f250f6109eac70b5d5ee81a9c0c.svg",
     "static/media/icon_refrigerator.svg": "/NangPa-Frontend/static/media/icon_refrigerator.bbf7842c9bf647920ecc285eeda00785.svg",
@@ -21,10 +21,10 @@
     "static/media/shape.svg": "/NangPa-Frontend/static/media/shape.7b799ab924b71291a0d126e220051ed8.svg",
     "static/media/searchXButton.svg": "/NangPa-Frontend/static/media/searchXButton.89e3e309bd0dd2e9b513a2524ca64970.svg",
     "main.e537b35d.css.map": "/NangPa-Frontend/static/css/main.e537b35d.css.map",
-    "main.cd6476fd.js.map": "/NangPa-Frontend/static/js/main.cd6476fd.js.map"
+    "main.3021180c.js.map": "/NangPa-Frontend/static/js/main.3021180c.js.map"
   },
   "entrypoints": [
     "static/css/main.e537b35d.css",
-    "static/js/main.cd6476fd.js"
+    "static/js/main.3021180c.js"
   ]
 }
