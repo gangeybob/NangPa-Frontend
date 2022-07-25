@@ -31,7 +31,6 @@ const RecipeDescriptionText = styled.p`
 `;
 
 function RecipeDetailItem({ description, src }) {
-  console.log(src);
   return (
     <ItemContainer>
       {src !== undefined ? (
