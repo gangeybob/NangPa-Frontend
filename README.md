@@ -7,36 +7,11 @@
 
 <br>
 
-## :heart_eyes: 결과물 및 기획 의도
-배달 음식은 그만 먹고 싶고, 재료를 사러 나가기는 귀찮다면,<br>
-냉장고에 있는 음식만으로 만들 수 없는 요리가 없을까?!<br>
-이 세상 모든 집밥러들의 고민을 해결하기 위한 애플리케이션, **냉장고 파먹기**<br><br>
-이런 분들에게 **냉장고 파먹기**를 추천합니다!
-- 장보기 비용을 최소화하고 싶은 '짠테크'족
-- 배달 음식은 질렸지만 재료를 사러 나가기는 귀찮은 '자취생'
-- 닭가슴살은 질렸어, 새로운 건강 식단을 짜고 싶은 '다이어터'
+## :heart_eyes: 프로젝트 목표
 
-<br>
-
-## :fire: 프로젝트 목표
-
-- HTML5, CSS3, Javascript, React, Spring Boot, Spring Data Jpa, Gradle, MariaDB 등의 기술을 활용하여 프로젝트에 임합니다.
-- Gather, Figjam, Slack 등을 사용하여 협업을 경험합니다.
-- 유저에게 도움이 되는 서비스가 무엇인지 고민해보고, 아이디어를 직접 구현합니다.
-- 디자인부터 개발, 배포의 과정까지 겪으며 간접적으로 서비스의 런칭을 경험합니다.
-
-<br>
-
-## :rainbow: 디자인
-
-![스크린샷 2022-07-25 오후 8 03 55](https://user-images.githubusercontent.com/50781066/180764659-b5d83b62-3715-4b39-b4d1-0a2bec764b83.png)
-
-<br>
-
-## :rocket: 기술 스택
-![기술스택](https://user-images.githubusercontent.com/109858852/180799855-1234293a-cba4-4d95-a662-a26740ef806e.png)
-
-
+- React, Recoil, React Query, Styled Compent 등의 기술을 활용하여 프로젝트에 임합니다.
+- Gather, Figjam, Slack 등을 사용하여 협업 합니다.
+  
 <br>
 
 ## :mag: 설치 방법
@@ -48,9 +23,9 @@ npm install
 yarn install
 
 ```
-
+  
 <br>
-
+  
 ## :snowflake: 요구 사항
 
 ### 재료로 레시피 검색
@@ -58,13 +33,21 @@ yarn install
 
 
 <br>
+  
+## :rainbow: 디자인
 
-## :monocle_face: 서비스 구성도 
+![스크린샷 2022-07-25 오후 8 03 55](https://user-images.githubusercontent.com/50781066/180764659-b5d83b62-3715-4b39-b4d1-0a2bec764b83.png)
+
+<br>
+
+## :rocket: 기술 스택
+![기술스택](https://user-images.githubusercontent.com/109858852/180799855-1234293a-cba4-4d95-a662-a26740ef806e.png)
 
 
 
 <br>
 
+  
 ## :calendar: 프로젝트 기간
 
 -   22.07.22 ~ 22.07.26
