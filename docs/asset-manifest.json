@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.01a6b431.css",
+    "main.js": "/static/js/main.17c60e1a.js",
+    "static/media/SUIT-Variable.woff2": "/static/media/SUIT-Variable.6aeca9ac22a5ad0a00b6.woff2",
+    "static/media/Filter.svg": "/static/media/Filter.fcd42f250f6109eac70b5d5ee81a9c0c.svg",
+    "static/media/icon_refrigerator.svg": "/static/media/icon_refrigerator.bbf7842c9bf647920ecc285eeda00785.svg",
+    "static/media/icon_community.svg": "/static/media/icon_community.017a8b77788fe35e8340c3c28b906b29.svg",
+    "static/media/share.svg": "/static/media/share.409c0c4b673f66e9f0841b4aba47c2c0.svg",
+    "static/media/bookmark.svg": "/static/media/bookmark.37d5b7282e73cc6eb04c4b512ff61738.svg",
+    "static/media/PlusButton.svg": "/static/media/PlusButton.5d21ad84384371a0cc5e8766e46ab507.svg",
+    "static/media/icon_search.svg": "/static/media/icon_search.708661230a29c1dc4ca19666a3fdec5e.svg",
+    "static/media/XButton.svg": "/static/media/XButton.7416eb5e24b36e7888811fabf16a3d14.svg",
+    "static/media/search.svg": "/static/media/search.03f67ac8eaf0175562033a2708a94122.svg",
+    "static/media/Arrow-Right.svg": "/static/media/Arrow-Right.2263b025b8f881fc42a2801883650458.svg",
+    "index.html": "/index.html",
+    "static/media/icon_mypage.svg": "/static/media/icon_mypage.94d22f71ace1a8fcab4d74cbb215743b.svg",
+    "static/media/chevron_right.svg": "/static/media/chevron_right.4982d2510a7825802666e205a09dda9d.svg",
+    "static/media/icon_home.svg": "/static/media/icon_home.4946916857c5dfe00a4a25ad44d107a5.svg",
+    "static/media/like.svg": "/static/media/like.7b799ab924b71291a0d126e220051ed8.svg",
+    "static/media/shape.svg": "/static/media/shape.7b799ab924b71291a0d126e220051ed8.svg",
+    "static/media/searchXButton.svg": "/static/media/searchXButton.89e3e309bd0dd2e9b513a2524ca64970.svg",
+    "main.01a6b431.css.map": "/static/css/main.01a6b431.css.map",
+    "main.17c60e1a.js.map": "/static/js/main.17c60e1a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.01a6b431.css",
+    "static/js/main.17c60e1a.js"
+  ]
+}
