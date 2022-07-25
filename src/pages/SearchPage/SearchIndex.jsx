@@ -13,7 +13,7 @@ import styled from "styled-components";
 import "./search.css";
 import { useRecoilState } from "recoil";
 import { selectedIngredientAtom } from "../../atom";
-
+//dada
 // TODO : Change dummy
 let data = ["간장", "계란", "밥", "참기름", "버터"];
 
