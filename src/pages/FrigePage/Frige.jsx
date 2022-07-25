@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import SearchFilter from "react-filter-search";
 import { Link } from "react-router-dom";
@@ -19,6 +20,7 @@ const FrigeSearchContainer = styled.div`
   width: 100%;
   padding: 70px 23px 0px 23px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+  background-color: white;
 `;
 
 const FrigeTitle = styled.p`
@@ -86,10 +88,11 @@ const IngredientName = styled.p`
 `;
 
 const SelectionCompleteBtn = styled.button`
+  z-index: 99;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 10px;
+  bottom: 85px;
   background: #2e8cfe;
   border-radius: 10px;
   width: 328px;
@@ -101,19 +104,46 @@ const SelectionCompleteBtn = styled.button`
   text-align: center;
   letter-spacing: -0.03em;
   color: #ffffff;
+  box-shadow: 0px 3px 10px #a9d0ff;
   &:disabled {
     background: #a9a9a9;
   }
 `;
 
+const FrigeGradient = styled.div`
+  z-index: 2;
+  width: 100%;
+  height: 170px;
+  position: fixed;
+  bottom: 64px;
+  background: linear-gradient(
+    181.02deg,
+    rgba(255, 255, 255, 0) 13.62%,
+    #ffffff 55.49%
+  );
+`;
+
 function Frige() {
   const [searchInput, setSearchInput] = useState("");
   const [myFrige, setMyFrige] = useRecoilState(myFrigeAtom);
+  const [irdnt, setIrdnt] = useState([]);
   console.log(myFrige);
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        "https://naengpa.herokuapp.com/recipe/getIrdnt"
+      );
+      const json = await response.json();
+      setIrdnt(json);
+    })();
+  }, []);
+  console.log(irdnt);
+
   return (
     <>
       <FrigeSearchContainer>
-        <FrigeTitle>셰프의{"\n"}냉장고 재료를 선택해주세요</FrigeTitle>
+        <FrigeTitle>셰프의 냉장고 재료를{"\n"}선택해주세요</FrigeTitle>
         <InputWrapper>
           <Search />
           <StyledInput
@@ -125,27 +155,32 @@ function Frige() {
         </InputWrapper>
         <SearchFilter
           value={searchInput}
-          data={data}
+          data={irdnt}
           renderResults={(results) => (
             <IngredientItemList>
               {results.map((item) =>
                 searchInput === "" ? null : (
                   <div>
-                    {myFrige.indexOf(item) === -1 ? (
+                    {myFrige.indexOf(item.title) === -1 ? (
                       <IngredientItem
-                        onClick={() => setMyFrige((prev) => [...prev, item])}
+                        onClick={() => {
+                          console.log(item.title);
+                          setMyFrige((prev) => [...prev, item.title]);
+                        }}
                       >
-                        <IngredientName>{item}</IngredientName>
+                        <IngredientName>{item.title}</IngredientName>
                       </IngredientItem>
                     ) : (
                       <SelectedIngredientItem
                         onClick={() =>
                           setMyFrige((prev) =>
-                            [...prev].filter((element) => element !== item)
+                            [...prev].filter(
+                              (element) => element !== item.title
+                            )
                           )
                         }
                       >
-                        <IngredientName>{item}</IngredientName>
+                        <IngredientName>{item.title}</IngredientName>
                       </SelectedIngredientItem>
                     )}
                   </div>
@@ -156,7 +191,7 @@ function Frige() {
         />
       </FrigeSearchContainer>
       <IngredientItemList>
-        <AllFrigeList />
+        <AllFrigeList irdnt={irdnt} />
       </IngredientItemList>
       {myFrige.length === 0 ? (
         <SelectionCompleteBtn disabled>선택 완료</SelectionCompleteBtn>
@@ -165,6 +200,7 @@ function Frige() {
           <SelectionCompleteBtn>선택 완료</SelectionCompleteBtn>
         </Link>
       )}
+      <FrigeGradient />
     </>
   );
 }
