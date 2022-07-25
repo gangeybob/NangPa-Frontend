@@ -44,6 +44,7 @@ const MyFrigeListContainer = styled.div`
   flex-wrap: wrap;
   gap: 8px;
   overflow-y: scroll;
+  align-content: flex-start;
 `;
 
 const MyFrigeItem = styled.button`

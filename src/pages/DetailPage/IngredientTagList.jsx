@@ -7,6 +7,7 @@ const StyledIngredientTagList = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  margin-bottom: 27px;
 `;
 
 const SelectedIngredientTag = styled.div`
@@ -40,9 +41,8 @@ const UnSelectedIngredientTag = styled.div`
   color: #a9a9a9;
 `;
 
-function IngredientTagList() {
+function IngredientTagList({ recipeIrdnts }) {
   const data = ["토마토", "계란", "식빵", "파슬리", "호밀빵", "후추"];
-  //   const setSelectedIngredientAtom = useSetRecoilState(selectedIngredientAtom);
 
   //   useEffect(() => {
   //     setSelectedIngredientAtom(["토마토", "계란", "식빵"]);
@@ -51,16 +51,20 @@ function IngredientTagList() {
 
   return (
     <StyledIngredientTagList>
-      {data.map((item) => {
+      {recipeIrdnts.map((item) => {
         for (let x of selectedIngredient) {
-          if (x === item) {
+          if (x === item.irdntNm) {
             return (
-              <SelectedIngredientTag key={item}>{item}</SelectedIngredientTag>
+              <SelectedIngredientTag key={item.irdntNm}>
+                {item.irdntNm}
+              </SelectedIngredientTag>
             );
           }
         }
         return (
-          <UnSelectedIngredientTag key={item}>{item}</UnSelectedIngredientTag>
+          <UnSelectedIngredientTag key={item.irdntNm}>
+            {item.irdntNm}
+          </UnSelectedIngredientTag>
         );
       })}
     </StyledIngredientTagList>
