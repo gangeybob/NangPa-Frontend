@@ -6,14 +6,16 @@ const RecipeDetailPhotoContainer = styled.div`
   width: 100%;
   overflow: hidden;
   border-radius: 10px;
+  margin-bottom: 10px;
 `;
 
 const RecipeDetailPhoto = styled.img`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: auto;
-  height: auto;
+  height: 181px;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const ItemContainer = styled.div`
@@ -24,21 +26,55 @@ const ItemContainer = styled.div`
 
 const RecipeDescriptionText = styled.p`
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 120%;
-  letter-spacing: -0.02em;
-  margin: 12px 0px 0px 0px;
+  letter-spacing: -0.01em;
+
+  margin-top: 3px;
 `;
 
-function RecipeDetailItem({ description, src }) {
+const RecipeNoContainer = styled.div`
+  width: 60px;
+  height: 27px;
+  background: rgba(46, 140, 254, 0.13);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  margin-right: 10px;
+  white-space: nowrap;
+`;
+
+const RecipeNoText = styled.p`
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  letter-spacing: -0.165px;
+  margin: 0;
+  color: #2e8cfe;
+`;
+
+const RecipeDescriptionContainer = styled.div`
+  display: flex;
+
+  justify-content: center;
+`;
+
+function RecipeDetailItem({ description, src, no }) {
   return (
     <ItemContainer>
-      {src !== undefined ? (
+      {src !== "" ? (
         <RecipeDetailPhotoContainer>
           <RecipeDetailPhoto src={src} />
         </RecipeDetailPhotoContainer>
       ) : null}
-      <RecipeDescriptionText>{description}</RecipeDescriptionText>
+      <RecipeDescriptionContainer>
+        <RecipeNoContainer>
+          <RecipeNoText>Step {no}</RecipeNoText>
+        </RecipeNoContainer>
+        <RecipeDescriptionText>{description}</RecipeDescriptionText>
+      </RecipeDescriptionContainer>
     </ItemContainer>
   );
 }

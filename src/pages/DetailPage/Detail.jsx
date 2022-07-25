@@ -8,7 +8,8 @@ import RecipeReviewList from "./RecipeReviewList";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { viewedRecipeAtom } from "../../atom";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 
 const RecipePhotoContainer = styled.div`
   position: relative;
@@ -54,11 +55,11 @@ const LikeCount = styled.p`
 
 const BtnContainer = styled.div`
   display: flex;
-  gap: 13px;
+  gap: 10px;
 `;
 
 const ContentsContainer = styled.div`
-  margin: 19px 23px;
+  padding: 19px 27px 0 27px;
   display: flex;
   flex-direction: column;
 `;
@@ -75,24 +76,26 @@ const RecipeTitle = styled.p`
 const RecipeShortDescription = styled.p`
   margin: 0;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 120%;
   letter-spacing: -0.02em;
 
-  color: #918e8e;
+  color: #a6a6a6;
 `;
 
 const IngredientContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 24px;
 `;
 
 const Subtitle = styled.p`
-  font-weight: 500;
-  font-size: 16px;
+  font-weight: 600;
+  font-size: 14px;
   line-height: 120%;
   letter-spacing: -0.02em;
-  margin: 22px 0px 12px 0px;
+  margin: 0;
+  margin-bottom: 9px;
 `;
 
 const Border = styled.div`
@@ -104,40 +107,43 @@ const Border = styled.div`
 
 function Detail() {
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
+  const [recipeDetail, setRecipeDetail] = useState([]);
   useEffect(() => {
     setViewedRecipe((prev) => [...prev, "아이디"]);
   }, [setViewedRecipe]);
+  const { recipeId } = useParams();
+
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(
+        `https://naengpa.herokuapp.com/recipe/getRecipeDetail/${recipeId}`
+      );
+      const json = await response.json();
+      setRecipeDetail(json);
+    })();
+  }, [recipeDetail, recipeId]);
+
+  const recipeName = recipeDetail?.recipeInfo?.recipeNmKo;
+  const recipeSummary = recipeDetail?.recipeInfo?.summary;
+  const recipeImg = recipeDetail?.recipeInfo?.imgUrl;
+  const recipeIrdnts = recipeDetail?.recipeIrdnts;
+  const recipeDescription = recipeDetail?.recipeCrses;
 
   return (
     <>
       <RecipePhotoContainer>
-        <RecipePhoto src="https://recipe1.ezmember.co.kr/cache/recipe/2020/12/06/c36207a3c0d453a4bc4eb14e19d5afb91.jpg" />
+        <RecipePhoto src={recipeImg} />
         <RecipePhotoGradient />
       </RecipePhotoContainer>
       <ContentsContainer>
-        <SnsContainer>
-          <LikeWrapper>
-            <Like />
-            {/* 좋아요버튼 기능구현 필요 */}
-            {/* 최근 본 레시피 확인용 링크 */}
-            <Link to={{ pathname: "/" }}>
-              <LikeCount>14k</LikeCount>
-            </Link>
-          </LikeWrapper>
-          <BtnContainer>
-            <Share />
-            <Bookmark />
-          </BtnContainer>
-        </SnsContainer>
-        <RecipeTitle>여름을 책임질 신선한 간장계란밥!</RecipeTitle>
-        <RecipeShortDescription>작은설명이 들어갈수있게</RecipeShortDescription>
+        <RecipeTitle>{recipeName}</RecipeTitle>
+        <RecipeShortDescription>{recipeSummary}</RecipeShortDescription>
         <IngredientContainer>
-          <Subtitle>식재료</Subtitle>
-          <IngredientTagList />
+          <Subtitle>레시피 재료</Subtitle>
+          <IngredientTagList recipeIrdnts={recipeIrdnts} />
         </IngredientContainer>
-        <RecipeDetailItemList />
-        <Border />
       </ContentsContainer>
+      <RecipeDetailItemList recipeDescription={recipeDescription} />
       <RecipeReviewList />
     </>
   );
