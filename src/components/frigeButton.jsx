@@ -1,15 +1,16 @@
 import React from "react";
 import styled from "styled-components";
-import { ReactComponent as XButton } from "../assets/XButton.svg";
-const FoodButton = ({ item, handleDelete, index }) => {
+
+const FrigeButton = ({ item, handleAdd, index }) => {
   return (
-    <Wrapper onClick={handleDelete}>
+    <Wrapper onClick={handleAdd}>
       <FoodText>{item}</FoodText>
-      <StyledMyIcon></StyledMyIcon>
     </Wrapper>
   );
 };
-export default FoodButton;
+
+export default FrigeButton;
+
 const Wrapper = styled.button`
   white-space: nowrap;
   display: flex;
@@ -18,13 +19,10 @@ const Wrapper = styled.button`
   margin-right: 10px;
   padding: 10px 20px;
   border-radius: 20px;
+  border: 1px solid ${({ theme }) => theme.colors.MAIN_COLOR};
   font-size: 14px;
-  color: white;
-  background-color: ${({ theme }) => theme.colors.MAIN_COLOR};
-`;
-
-const StyledMyIcon = styled(XButton)`
-  pointer-events: none;
+  color: ${({ theme }) => theme.colors.MAIN_COLOR};
+  background-color: white;
 `;
 
 const FoodText = styled.div`
