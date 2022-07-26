@@ -1,5 +1,5 @@
 {
-  "homepage" : "https://gangeybob.github.io/NangPa-Frontend",
+  "homepage" : "https://lucky-sable-32565a.netlify.app",
     "name": "nangpa-frontend",
     "version": "0.1.0",
     "private": true,
@@ -25,7 +25,7 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "build":  "CI= yarn build && cp build/index.html build/404.html",
+        "build": "CI= react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
