@@ -22,15 +22,15 @@ const ViewedRecipeImg = styled.img`
 `;
 
 function ViewedRecipeImgList({ item }) {
-  useEffect(() => {
-    (async () => {
-      const response = await fetch(
-        `https://naengpa.herokuapp.com/recipe/getRecipeDetail/${recipeId}`
-      );
-      const json = await response.json();
-      setRecipeDetail(json);
-    })();
-  }, [recipeDetail, recipeId]);
+  //   useEffect(() => {
+  //     (async () => {
+  //       const response = await fetch(
+  //         `https://naengpa.herokuapp.com/recipe/getRecipeDetail/${recipeId}`
+  //       );
+  //       const json = await response.json();
+  //       setRecipeDetail(json);
+  //     })();
+  //   }, [recipeDetail, recipeId]);
 
   for (let x of mockData) {
     //TODO: 76대신 item 넣기
