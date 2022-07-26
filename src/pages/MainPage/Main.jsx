@@ -12,6 +12,7 @@ const Container = styled.div`
   flex-direction: column;
   padding: 0px 23px;
 `;
+
 const Subtitle = styled.p`
   color: #a3a3a3;
   margin: 0;
@@ -40,7 +41,7 @@ const Title = styled.p`
 const SearchBtn = styled.button`
   width: 100%;
   height: 50px;
-  background-color: #eaeaea;
+  background-color: #eef1f7;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -53,7 +54,7 @@ const SearchBtn = styled.button`
   line-height: 22px;
   letter-spacing: -0.165px;
 
-  color: #a9a9a9;
+  color: #9ba1af;
 `;
 
 const RecentlyViewedRecipeContainer = styled.div`
@@ -62,10 +63,16 @@ const RecentlyViewedRecipeContainer = styled.div`
   width: 100%;
 `;
 
+const MainBg = styled.div`
+  background-color: #f8fbff;
+  height: 100vh;
+  width: 100vw;
+`;
+
 function Main() {
   const viewedRecipe = useRecoilValue(viewedRecipeAtom);
   return (
-    <>
+    <MainBg>
       <Container>
         <TitleWrapper>
           <Subtitle>🍽</Subtitle>
@@ -84,7 +91,7 @@ function Main() {
           <RecentlyViewedRecipe />
         </RecentlyViewedRecipeContainer>
       ) : null}
-    </>
+    </MainBg>
   );
 }
 

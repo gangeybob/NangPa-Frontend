@@ -58,9 +58,6 @@ const ViewedRecipePhotoGradient = styled.div`
 `;
 
 function RecentlyViewedRecipe() {
-  const viewedRecipe = useRecoilValue(viewedRecipeAtom);
-  console.log(viewedRecipe);
-
   return (
     <>
       <RecentlyViewedRecipeHeader>
@@ -72,12 +69,7 @@ function RecentlyViewedRecipe() {
       </RecentlyViewedRecipeHeader>
       <ViewedRecipeImgContainer>
         <ViewedRecipePhotoGradient />
-        {viewedRecipe.map((item) => (
-          <ViewedRecipeImgList item={item} />
-        ))}
-        {viewedRecipe.map((item) => (
-          <ViewedRecipeImgList item={item} />
-        ))}
+        <ViewedRecipeImgList />
       </ViewedRecipeImgContainer>
     </>
   );

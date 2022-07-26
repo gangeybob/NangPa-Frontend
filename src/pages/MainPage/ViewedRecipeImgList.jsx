@@ -35,9 +35,11 @@ function ViewedRecipeImgList({ item }) {
   //       setRecipeDetail(json);
   //     })();
   //   }, [recipeDetail, recipeId]);
+
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
-  const set = new Set(viewedRecipe);
-  setViewedRecipe([...set]);
+  const setObjViewedRecipe = new Set(viewedRecipe);
+  const limitViewedRecipe = [...setObjViewedRecipe].splice(0, 5);
+  setViewedRecipe([...limitViewedRecipe]);
 
   return viewedRecipe.map((item) => {
     <div>
