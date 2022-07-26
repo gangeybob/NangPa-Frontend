@@ -3,6 +3,7 @@ import { ReactComponent as Chevron } from "../../assets/chevron_right.svg";
 import { useRecoilValue } from "recoil";
 import { viewedRecipeAtom } from "../../atom";
 import ViewedRecipeImgList from "./ViewedRecipeImgList";
+import { useEffect } from "react";
 
 const RecentlyViewedRecipeContainer = styled.div``;
 
@@ -57,8 +58,6 @@ const ViewedRecipePhotoGradient = styled.div`
 `;
 
 function RecentlyViewedRecipe() {
-  const viewedRecipe = useRecoilValue(viewedRecipeAtom);
-  console.log(viewedRecipe);
   return (
     <>
       <RecentlyViewedRecipeHeader>
@@ -70,12 +69,7 @@ function RecentlyViewedRecipe() {
       </RecentlyViewedRecipeHeader>
       <ViewedRecipeImgContainer>
         <ViewedRecipePhotoGradient />
-        {viewedRecipe.map((item) => (
-          <ViewedRecipeImgList item={item} />
-        ))}
-        {viewedRecipe.map((item) => (
-          <ViewedRecipeImgList item={item} />
-        ))}
+        <ViewedRecipeImgList />
       </ViewedRecipeImgContainer>
     </>
   );
