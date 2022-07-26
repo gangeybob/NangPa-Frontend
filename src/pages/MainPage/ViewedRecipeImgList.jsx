@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { viewedRecipeAtom } from "../../atom";
 
 const mockData = [
   {
@@ -22,6 +24,8 @@ const ViewedRecipeImg = styled.img`
 `;
 
 function ViewedRecipeImgList({ item }) {
+  //TODO: 최근 본 배열을 넘겨주고 해당하는 사진들을 받아오는 api가 필요.
+
   //   useEffect(() => {
   //     (async () => {
   //       const response = await fetch(
@@ -31,15 +35,15 @@ function ViewedRecipeImgList({ item }) {
   //       setRecipeDetail(json);
   //     })();
   //   }, [recipeDetail, recipeId]);
+  const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
+  const set = new Set(viewedRecipe);
+  setViewedRecipe([...set]);
 
-  for (let x of mockData) {
-    //TODO: 76대신 item 넣기
-    return x.recipeId === 76 ? (
-      <div>
-        <ViewedRecipeImg src={x.imgUrl} />
-      </div>
-    ) : null;
-  }
+  return viewedRecipe.map((item) => {
+    <div>
+      <ViewedRecipeImg src={item.imgUrl} />
+    </div>;
+  });
 }
 
 export default ViewedRecipeImgList;

@@ -109,7 +109,7 @@ function Detail() {
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
   const [recipeDetail, setRecipeDetail] = useState([]);
   useEffect(() => {
-    setViewedRecipe((prev) => [...prev, recipeId]);
+    setViewedRecipe((prev) => [recipeId, ...prev]);
   }, [setViewedRecipe]);
   const { recipeId } = useParams();
 
