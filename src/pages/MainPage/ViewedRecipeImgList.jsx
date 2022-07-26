@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { useEffect } from "react";
+import { useRecoilState } from "recoil";
+import { viewedRecipeAtom } from "../../atom";
 
 const mockData = [
   {
@@ -22,16 +24,28 @@ const ViewedRecipeImg = styled.img`
 `;
 
 function ViewedRecipeImgList({ item }) {
-  useEffect(() => {}, []);
-  //TODO: 레시피 전체 리스트 불러오기 : imgUrl
-  for (let x of mockData) {
-    //TODO: 76대신 item 넣기
-    return x.recipeId === 76 ? (
-      <div>
-        <ViewedRecipeImg src={x.imgUrl} />
-      </div>
-    ) : null;
-  }
+  //TODO: 최근 본 배열을 넘겨주고 해당하는 사진들을 받아오는 api가 필요.
+
+  //   useEffect(() => {
+  //     (async () => {
+  //       const response = await fetch(
+  //         `https://naengpa.herokuapp.com/recipe/getRecipeDetail/${recipeId}`
+  //       );
+  //       const json = await response.json();
+  //       setRecipeDetail(json);
+  //     })();
+  //   }, [recipeDetail, recipeId]);
+
+  const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
+  const setObjViewedRecipe = new Set(viewedRecipe);
+  const limitViewedRecipe = [...setObjViewedRecipe].splice(0, 5);
+  setViewedRecipe([...limitViewedRecipe]);
+
+  return viewedRecipe.map((item) => {
+    <div>
+      <ViewedRecipeImg src={item.imgUrl} />
+    </div>;
+  });
 }
 
 export default ViewedRecipeImgList;
