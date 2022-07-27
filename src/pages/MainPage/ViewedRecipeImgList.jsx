@@ -45,13 +45,16 @@ function ViewedRecipeImgList({ item }) {
       });
   }, []);
   console.log(viewedRecipeData);
-  return viewedRecipeData.map((item) => {
-    console.log(item.imgUrl);
-    return (
-      <div>
-        <ViewedRecipeImgItem src={item.imgUrl} />
-      </div>
-    );
+  return numberLimitViewedRecipe.map((item) => {
+    for (let x of viewedRecipeData) {
+      if (x.recipeId === item) {
+        return (
+          <div>
+            <ViewedRecipeImgItem src={x.imgUrl} />
+          </div>
+        );
+      }
+    }
   });
 }
 
