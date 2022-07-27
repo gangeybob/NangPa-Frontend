@@ -213,7 +213,6 @@ function SearchIndex() {
           </div>
         </Nav.Item>
       </Nav>
-      <Navigation></Navigation>
     </Container>
   );
 }
