@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { viewedRecipeAtom } from "../../atom";
+import axios from "axios";
 
 const mockData = [
   {
@@ -24,24 +25,33 @@ const ViewedRecipeImg = styled.img`
 `;
 
 function ViewedRecipeImgList({ item }) {
-  //TODO: 최근 본 배열을 넘겨주고 해당하는 사진들을 받아오는 api가 필요.
-
-  //   useEffect(() => {
-  //     (async () => {
-  //       const response = await fetch(
-  //         `https://naengpa.herokuapp.com/recipe/getRecipeDetail/${recipeId}`
-  //       );
-  //       const json = await response.json();
-  //       setRecipeDetail(json);
-  //     })();
-  //   }, [recipeDetail, recipeId]);
-
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
-  const setObjViewedRecipe = new Set(viewedRecipe);
-  const limitViewedRecipe = [...setObjViewedRecipe].splice(0, 5);
-  setViewedRecipe([...limitViewedRecipe]);
+  const limitViewedRecipe = [...new Set(viewedRecipe)].splice(0, 5);
+  const numberLimitViewedRecipe = [];
+  for (let x of limitViewedRecipe) {
+    numberLimitViewedRecipe.push(Number(x));
+  }
 
-  return viewedRecipe.map((item) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios({
+      method: "POST",
+      url: "https://nangpa-server.herokuapp.com/recipe/getCurRecipeList",
+      data: {
+        recipeIds: numberLimitViewedRecipe,
+      },
+    })
+      .then((Response) => {
+        setData(Response.data);
+        console.log(data);
+      })
+      .catch((Error) => {
+        console.log(Error);
+      });
+  }, [numberLimitViewedRecipe, data]);
+
+  return data.map((item) => {
     <div>
       <ViewedRecipeImg src={item.imgUrl} />
     </div>;
