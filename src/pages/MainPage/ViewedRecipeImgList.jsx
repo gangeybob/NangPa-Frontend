@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useRecoilState } from "recoil";
 import { viewedRecipeAtom } from "../../atom";
 import axios from "axios";
+import ViewedRecipeImgItem from "./ViewedRecipeImgItem";
 
 const mockData = [
   {
@@ -17,13 +18,6 @@ const mockData = [
   },
 ];
 
-const ViewedRecipeImg = styled.img`
-  height: 124px;
-  width: 124px;
-  object-fit: cover;
-  border-radius: 12px;
-`;
-
 function ViewedRecipeImgList({ item }) {
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
   const limitViewedRecipe = [...new Set(viewedRecipe)].splice(0, 5);
@@ -32,7 +26,7 @@ function ViewedRecipeImgList({ item }) {
     numberLimitViewedRecipe.push(Number(x));
   }
 
-  const [data, setData] = useState([]);
+  const [viewedRecipeData, setViewedRecipeData] = useState([]);
 
   useEffect(() => {
     axios({
@@ -43,18 +37,21 @@ function ViewedRecipeImgList({ item }) {
       },
     })
       .then((Response) => {
-        setData(Response.data);
-        console.log(data);
+        setViewedRecipeData(Response.data);
+        console.log(Response.data);
       })
       .catch((Error) => {
         console.log(Error);
       });
-  }, [numberLimitViewedRecipe, data]);
-
-  return data.map((item) => {
-    <div>
-      <ViewedRecipeImg src={item.imgUrl} />
-    </div>;
+  }, []);
+  console.log(viewedRecipeData);
+  return viewedRecipeData.map((item) => {
+    console.log(item.imgUrl);
+    return (
+      <div>
+        <ViewedRecipeImgItem src={item.imgUrl} />
+      </div>
+    );
   });
 }
 

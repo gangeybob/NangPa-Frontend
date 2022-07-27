@@ -138,7 +138,6 @@ function Frige() {
       setIrdnt(json);
     })();
   }, []);
-  console.log(irdnt);
 
   return (
     <>
@@ -164,7 +163,6 @@ function Frige() {
                     {myFrige.indexOf(item.irdntNm) === -1 ? (
                       <IngredientItem
                         onClick={() => {
-                          console.log(item.irdntNm);
                           setMyFrige((prev) => [...prev, item.irdntNm]);
                         }}
                       >
