@@ -7,10 +7,12 @@ import Community from "../pages/CommunityPage/Community";
 import Frige from "../pages/FrigePage/Frige";
 import MyFrige from "../pages/MyFrigePage/MyFrige";
 import ResultList from "../pages/resultList";
+import Navigation from "../components/navigation";
 
 const RootRoute = () => {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Navigation></Navigation>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/:recipeId/detail" element={<Detail />} />
