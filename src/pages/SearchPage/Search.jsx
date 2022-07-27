@@ -18,7 +18,8 @@ import Navigation from "../../components/navigation";
 import { useRecoilState } from "recoil";
 import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
 import FrigeButton from "../../components/frigeButton";
-//ada
+import { useNavigate } from "react-router-dom";
+
 const RefridgeTitle = styled.h2`
   margin-top: 15px;
   margin-bottom: 19px;
@@ -120,8 +121,14 @@ function SearchIndex() {
     setSelectedIngredient([...selectedIngredient, e.target.outerText]);
     console.log(selectedIngredient);
   };
+
+  const navigate = useNavigate();
+
+  const moveToNext = (e) => {
+    navigate("/resultlist");
+  };
   return (
-    <Container className="min-vh-100 d-flex flex-column search_wrap">
+    <Container className="container min-vh-100 d-flex flex-column search_wrap">
       <Row xs={12}>
         <Col xs={12}>
           <RefridgeTitle>
@@ -201,11 +208,12 @@ function SearchIndex() {
       {/* TODO: 검색 결과 화면 */}
       <Nav className="justify-content-center" activeKey="/home">
         <Nav.Item className="w-100">
-          <Nav.Link href="/resultlist" className="text-center nav-search">
+          <div onClick={moveToNext} className="link text-center nav-search">
             레시피 검색하기
-          </Nav.Link>
+          </div>
         </Nav.Item>
       </Nav>
+      <Navigation></Navigation>
     </Container>
   );
 }

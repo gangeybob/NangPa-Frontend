@@ -13,16 +13,16 @@ const Navigation = () => {
       <Link to={"/"}>
         <StyledMyIconHome></StyledMyIconHome>
       </Link>
-      <Link to={"/"}>
+      <Link to={"/search"}>
         <StyledMyIconSearch></StyledMyIconSearch>
       </Link>
-      <Link to={"/"}>
+      <Link to={"/myfrige"}>
         <StyledMyIconRefrigerator></StyledMyIconRefrigerator>
       </Link>
-      <Link to={"/"}>
+      <Link to={"/community"}>
         <StyledMyIconCommunity></StyledMyIconCommunity>
       </Link>
-      <Link to={"/"}>
+      <Link to={"/mypage"}>
         <StyledMyIconMypage></StyledMyIconMypage>
       </Link>
     </Container>
@@ -41,6 +41,7 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1000;
 `;
 
 const StyledMyIconHome = styled(Home)``;
