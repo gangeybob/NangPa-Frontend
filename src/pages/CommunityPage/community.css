@@ -49,9 +49,8 @@
     padding: 0;
 }
 .community-wrap .card-title {
+    maring-bottom: 0;
     padding: 0;
-    font-family: 'SUIT';
-    font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 120%;
