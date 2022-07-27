@@ -58,7 +58,7 @@ const RecipeNoText = styled.p`
 const RecipeDescriptionContainer = styled.div`
   display: flex;
 
-  justify-content: center;
+  /* align-items: center; */
 `;
 
 function RecipeDetailItem({ description, src, no }) {
