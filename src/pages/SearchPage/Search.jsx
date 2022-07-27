@@ -14,12 +14,12 @@ import "./search.css";
 import FoodButton from "../../components/foodButton";
 import { ReactComponent as searchXButton } from "../../assets/searchXButton.svg";
 import axios from "axios";
-import Navigation from "../../components/navigation";
 import { useRecoilState } from "recoil";
 import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
 import FrigeButton from "../../components/frigeButton";
 import { useNavigate } from "react-router-dom";
-
+// import { ReactComponent as inputSearchButton } from "../assets/inputSearch.svg";
+//faf
 const RefridgeTitle = styled.h2`
   margin-top: 15px;
   margin-bottom: 19px;
@@ -64,10 +64,18 @@ const FoodButtonContainer = styled.div`
     display: none;
   }
 `;
+
+// const StyledMyIconSearch = styled(inputSearchButton)`
+//   display: ${({ searchInput }) => (searchInput ? "none" : "block")};
+//   cursor: pointer;
+//   position: absolute;
+//   left: 15px;
+//   top: 15px;
+// `;
 const FormControlWrapper = styled.div`
   position: relative;
 `;
-const StyledMyIcon = styled(searchXButton)`
+const StyledMyIconSearchX = styled(searchXButton)`
   display: ${({ searchInput }) => (searchInput ? "block" : "none")};
   cursor: pointer;
   position: absolute;
@@ -143,16 +151,17 @@ function SearchIndex() {
             ></img>
           </RefridgeTitle>
           <FormControlWrapper>
+            {/* <StyledMyIconSearch></StyledMyIconSearch> */}
             <FormControl
               className="border border-0 search-input"
-              placeholder="검색어를 입력해주세요"
+              placeholder="재료를 불러오고 있어요"
               value={searchInput}
               onChange={handleChangingSearch}
             />
-            <StyledMyIcon
+            <StyledMyIconSearchX
               searchInput={searchInput}
               onClick={handleXButton}
-            ></StyledMyIcon>
+            ></StyledMyIconSearchX>
           </FormControlWrapper>
           <SearchFilter
             value={searchInput}
