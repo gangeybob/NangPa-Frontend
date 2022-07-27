@@ -22,6 +22,10 @@ const RecipeReviewPhoto = styled.img`
   object-fit: cover;
 `;
 
+const RecipeReviewListContainer = styled.div`
+  padding-bottom: 60px;
+`;
+
 const reviewMockData = [
   {
     src: "https://static.wtable.co.kr/image-resize/production/service/recipe/121/16x9/17715671-f763-4f85-ad7e-2b10097b77fb.jpg",
@@ -55,7 +59,7 @@ const reviewMockData = [
 
 function RecipeReviewList() {
   return (
-    <>
+    <RecipeReviewListContainer>
       <StyledText>다른 분들은 이렇게 만들었어요</StyledText>
       <RecipeReviewPhotoSwiper>
         {reviewMockData.map((item) => {
@@ -66,7 +70,7 @@ function RecipeReviewList() {
           );
         })}
       </RecipeReviewPhotoSwiper>
-    </>
+    </RecipeReviewListContainer>
   );
 }
 
