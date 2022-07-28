@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import { viewedRecipeAtom } from "../../atom";
 import axios from "axios";
 import ViewedRecipeImgItem from "./ViewedRecipeImgItem";
+import { Link } from "react-router-dom";
 
 const mockData = [
   {
@@ -49,9 +50,11 @@ function ViewedRecipeImgList({ item }) {
     for (let x of viewedRecipeData) {
       if (x.recipeId === item) {
         return (
-          <div>
-            <ViewedRecipeImgItem src={x.imgUrl} />
-          </div>
+          <Link to={`/${x.recipeId}/detail`}>
+            <div>
+              <ViewedRecipeImgItem src={x.imgUrl} />
+            </div>
+          </Link>
         );
       }
     }
