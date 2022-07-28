@@ -33,7 +33,7 @@ const StyledLink = styled(Nav.Link)`
     height: 24px;
     line-height: 24px;
     text-align: center;
-    maring-top: 19px;
+    margin-top: 19px;
     margin-left: auto;
 `;
 
@@ -49,6 +49,7 @@ const ReviewIcon = styled.i`
 
 const ScrollWrap = styled.div`
     overflow-x: scroll;
+    overflow-y: hidden;
     width: calc(100% + 4px);
     display: flex;
     height: 31px;
@@ -56,6 +57,8 @@ const ScrollWrap = styled.div`
     margin-left: -4px;
     padding-right: 20px;
     flex-wrap: nowrap;
+    
+    &::-webkit-scrollbar{ display:none; }
 `;
 
 const StyledButton = styled(Nav.Link)`
