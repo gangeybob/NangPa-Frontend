@@ -17,7 +17,7 @@ const AddFoodButton = () => {
 
 export default AddFoodButton;
 const Wrapper = styled.div`
-  margin-right: 5px;
+  margin-right: 8px;
 `;
 
 const Button = styled.div`
@@ -25,7 +25,7 @@ const Button = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  line-height: 30px;
+  line-height: 27px;
   text-align: center;
 `;
 

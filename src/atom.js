@@ -11,5 +11,5 @@ export const viewedRecipeAtom = atom({
 
 export const myFrigeAtom = atom({
   key: "viewedFrige",
-  default: ["삽겹살", "굴소스", "중국당면", "사과"],
+  default: ["베이컨", "굴소스", "오이", "사과", "와사비", "밀가루", "빵가루"],
 });
