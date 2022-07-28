@@ -13,15 +13,15 @@ import styled from "styled-components";
 import "./search.css";
 import FoodButton from "../../components/foodButton";
 import { ReactComponent as searchXButton } from "../../assets/searchXButton.svg";
+import { ReactComponent as inputSearchButton } from "../../assets/inputSearch.svg";
 import axios from "axios";
 import { useRecoilState } from "recoil";
 import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
 import FrigeButton from "../../components/frigeButton";
 import { useNavigate } from "react-router-dom";
-// import { ReactComponent as inputSearchButton } from "../assets/inputSearch.svg";
-//faf
+
 const RefridgeTitle = styled.h2`
-  margin-top: 15px;
+  margin-top: 34px;
   margin-bottom: 19px;
   font-weight: 600;
   font-size: 24px;
@@ -30,6 +30,10 @@ const RefridgeTitle = styled.h2`
   img {
     transform: translateY(-20%);
   }
+`;
+const StyledContainer = styled(Container)`
+  padding-left: 27px;
+  padding-right: 27px;
 `;
 const SelectTitle = styled.h3`
   margin-bottom: 6px;
@@ -44,6 +48,8 @@ const SelectedItemWrap = styled.div`
   border-bottom: 0.5px solid rgba(73, 73, 73, 0.4);
 `;
 const SelectItemArea = styled.h3`
+  display: flex;
+  flex-wrap: wrap;
   height: 165px;
   padding: 17px 19px;
   font-weight: 500;
@@ -56,22 +62,27 @@ const SelectItemArea = styled.h3`
 `;
 const FoodButtonContainer = styled.div`
   display: flex;
-  overflow-x: scroll;
+  flex-wrap: wrap;
+  height: 120px;
   background-color: #f1f1f1;
   width: 100%;
+  padding: 21px 14px;
   -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  border-radius: 10px;
 `;
 
-// const StyledMyIconSearch = styled(inputSearchButton)`
-//   display: ${({ searchInput }) => (searchInput ? "none" : "block")};
-//   cursor: pointer;
-//   position: absolute;
-//   left: 15px;
-//   top: 15px;
-// `;
+const SearchContainer = styled.div`
+  padding-bottom: 37px;
+`;
+
+const StyledMyIconSearch = styled(inputSearchButton)`
+  display: ${({ searchInput }) => (searchInput ? "none" : "block")};
+  cursor: pointer;
+  position: absolute;
+  left: 15px;
+  top: 25px;
+  transform: translateY(-50%);
+`;
 const FormControlWrapper = styled.div`
   position: relative;
 `;
@@ -82,40 +93,67 @@ const StyledMyIconSearchX = styled(searchXButton)`
   right: 15px;
   top: 15px;
 `;
+
+const StyledFormControl = styled(FormControl)`
+  padding: 13px 15px;
+  padding-left: ${({ searchInput }) => (searchInput === "" ? "37px" : "13px")};
+  background: var(--input-text-bg);
+  border-radius: 10px;
+`;
+
+const RecipeSearchButton = styled.div`
+  margin-bottom: 21px;
+  padding: 10px 20px;
+  height: 57px;
+  line-height: 65px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 37px;
+  letter-spacing: -0.165px;
+  color: #fff;
+  background: ${({ dataState }) => (dataState ? "#2e8cfe" : "#A9A9A9")};
+  border-radius: 10px;
+  box-sizing: border-box;
+  pointer-events: ${({ dataState }) => (dataState ? "auto" : "none")};
+  cursor: pointer;
+  text-align: center;
+`;
 function SearchIndex() {
   const [searchInput, setSearchInput] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useRecoilState(
     selectedIngredientAtom
   );
   const [viewMyFrigeAtom, setViewMyFrigeAtom] = useRecoilState(myFrigeAtom);
-  console.log(viewMyFrigeAtom);
-
+  const [dataState, SetDataState] = useState(false);
+  const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("https://naengpa.herokuapp.com/recipe/getIrdnt")
+      .get("https://nangpa-server.herokuapp.com/recipe/getIrdnt")
       .then((Response) => {
-        setData(Response.data);
-        console.log(data);
-        console.log(Response.data[0]);
+        let data = [];
+        for (let i = 0; i < Response.data.length; i++) {
+          data.push(Response.data[i].irdntNm);
+        }
+        setData(data);
+        SetDataState(true);
       })
       .catch((Error) => {
         console.log(Error);
       });
   }, []);
 
-  const [data, setData] = useState([]);
-  useEffect(() => {
-    // console.log(searchInput);
-  }, [searchInput]);
   const addListClick = (e) => {
     setSelectedIngredient([...selectedIngredient, e.target.outerText]);
-    console.log(selectedIngredient);
+    setData(data.filter((item) => item !== e.target.outerText));
+    console.log(e);
   };
   const handleDelete = (e) => {
-    console.log(e);
+    console.log(selectedIngredient, data);
     setSelectedIngredient(
       selectedIngredient.filter((item) => item !== e.target.outerText)
     );
+
+    setData([...data, e.target.outerText]);
   };
   const handleChangingSearch = (e) => {
     setSearchInput(e.target.value);
@@ -127,7 +165,8 @@ function SearchIndex() {
   };
   const handleAdd = (e) => {
     setSelectedIngredient([...selectedIngredient, e.target.outerText]);
-    console.log(selectedIngredient);
+    setData(data.filter((item) => item !== e.target.outerText));
+    console.log(selectedIngredient, e.target.outerText);
   };
 
   const navigate = useNavigate();
@@ -136,9 +175,9 @@ function SearchIndex() {
     navigate("/resultlist");
   };
   return (
-    <Container className="container min-vh-100 d-flex flex-column search_wrap">
+    <StyledContainer className="container min-vh-100 d-flex flex-column search_wrap">
       <Row xs={12}>
-        <Col xs={12}>
+        <SearchContainer>
           <RefridgeTitle>
             요리에 사용할 재료를
             <br />
@@ -151,12 +190,13 @@ function SearchIndex() {
             ></img>
           </RefridgeTitle>
           <FormControlWrapper>
-            {/* <StyledMyIconSearch></StyledMyIconSearch> */}
-            <FormControl
+            <StyledMyIconSearch searchInput={searchInput}></StyledMyIconSearch>
+            <StyledFormControl
               className="border border-0 search-input"
               placeholder="재료를 불러오고 있어요"
               value={searchInput}
               onChange={handleChangingSearch}
+              searchInput={searchInput}
             />
             <StyledMyIconSearchX
               searchInput={searchInput}
@@ -175,25 +215,25 @@ function SearchIndex() {
                       onClick={addListClick}
                       className="btn-item bg-transparent text-dark"
                     >
-                      {item.title}
+                      {item}
                     </Button>
                   </ListGroup.Item>
                 ))}
               </ListGroup>
             )}
           />
-        </Col>
+        </SearchContainer>
       </Row>
       <Row xs={12} className="mt-auto d-flex flex-column-reverse">
         <Col xs={12}>
           <SelectTitle className="text">이 재료들로 요리해요</SelectTitle>
           {/* TODO: 선택한 재료가 있는 경우/없는 경우*/}
           <FoodButtonContainer>
-            dad
             {selectedIngredient === []
               ? ""
               : selectedIngredient.map((item) => (
                   <FoodButton
+                    key={item.id}
                     handleDelete={handleDelete}
                     item={item}
                   ></FoodButton>
@@ -217,12 +257,12 @@ function SearchIndex() {
       {/* TODO: 검색 결과 화면 */}
       <Nav className="justify-content-center" activeKey="/home">
         <Nav.Item className="w-100">
-          <div onClick={moveToNext} className="link text-center nav-search">
+          <RecipeSearchButton dataState={dataState} onClick={moveToNext}>
             레시피 검색하기
-          </div>
+          </RecipeSearchButton>
         </Nav.Item>
       </Nav>
-    </Container>
+    </StyledContainer>
   );
 }
 export default SearchIndex;

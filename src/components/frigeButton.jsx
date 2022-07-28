@@ -1,9 +1,15 @@
 import React from "react";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { selectedIngredientAtom } from "../atom";
 
-const FrigeButton = ({ item, handleAdd, index }) => {
+const FrigeButton = ({ item, handleAdd }) => {
+  const [selectedIngredient, setSelectedIngredient] = useRecoilState(
+    selectedIngredientAtom
+  );
+  const valid = selectedIngredient.includes(item);
   return (
-    <Wrapper onClick={handleAdd}>
+    <Wrapper valid={valid} onClick={handleAdd}>
       <FoodText>{item}</FoodText>
     </Wrapper>
   );
@@ -17,12 +23,16 @@ const Wrapper = styled.button`
   align-items: center;
   flex-direction: row;
   margin-right: 10px;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-radius: 20px;
-  border: 1px solid ${({ theme }) => theme.colors.MAIN_COLOR};
+  pointer-events: ${({ valid }) => (valid ? "none" : "auto")};
+  border: ${({ valid }) => (valid ? "" : "1px")} solid
+    ${({ theme }) => theme.colors.MAIN_COLOR};
   font-size: 14px;
-  color: ${({ theme }) => theme.colors.MAIN_COLOR};
-  background-color: white;
+  color: ${({ valid }) => (valid ? "white" : "#2E8CFE")};
+  background-color: ${({ valid }) => (valid ? "#2E8CFE" : "transparent")};
+  height: 37px;
+  margin-bottom: 10px;
 `;
 
 const FoodText = styled.div`
