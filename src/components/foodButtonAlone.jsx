@@ -13,7 +13,7 @@ const Wrapper = styled.button`
   display: flex;
   align-items: center;
   flex-direction: row;
-  margin-right: 10px;
+  margin-right: 8px;
   padding: 10px 20px;
   border-radius: 20px;
   font-size: 14px;

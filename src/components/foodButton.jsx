@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as XButton } from "../assets/XButton.svg";
-const FoodButton = ({ item, handleDelete, index }) => {
+const FoodButton = ({ item, handleDelete }) => {
   return (
     <Wrapper onClick={handleDelete}>
       <FoodText>{item}</FoodText>
@@ -16,7 +16,9 @@ const Wrapper = styled.button`
   align-items: center;
   flex-direction: row;
   margin-right: 10px;
-  padding: 10px 20px;
+  margin-bottom: 10px;
+  height: 37px;
+  padding: 15px;
   border-radius: 20px;
   font-size: 14px;
   color: white;
@@ -29,4 +31,5 @@ const StyledMyIcon = styled(XButton)`
 
 const FoodText = styled.div`
   margin-right: 5px;
+  pointer-events: none;
 `;
