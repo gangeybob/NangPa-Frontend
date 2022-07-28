@@ -88,12 +88,22 @@ const Carrot = styled.img`
   right: -20px;
 `;
 
+const Burger = styled.img`
+  position: fixed;
+  top: 0px;
+  right: -130px;
+`;
+
 function Main() {
   const viewedRecipe = useRecoilValue(viewedRecipeAtom);
   return (
     <MainBg>
       <Container>
-        {viewedRecipe.length > 0 ? null : <Carrot src="images/carrot.png" />}
+        {viewedRecipe.length > 0 ? (
+          <Burger src="images/burger.png" />
+        ) : (
+          <Carrot src="images/carrot.png" />
+        )}
 
         <TitleWrapper>
           <Subtitle>🍽</Subtitle>
