@@ -28,7 +28,7 @@ const ResultList = () => {
     abc.current = [...selectedIngredient];
     axios({
       method: "POST",
-      url: "https://naengpa.herokuapp.com/recipe/getRecipeList",
+      url: "https://nangpa-server.herokuapp.com/recipe/getRecipeList",
       data: {
         irdntNms: [...selectedIngredient],
       },

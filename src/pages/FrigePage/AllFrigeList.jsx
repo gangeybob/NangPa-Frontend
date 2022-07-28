@@ -45,21 +45,21 @@ function AllFrigeList({ irdnt }) {
   return (
     <AllFrigeListContainer>
       {irdnt.map((item) =>
-        myFrige.indexOf(item.title) === -1 ? (
+        myFrige.indexOf(item.irdntNm) === -1 ? (
           <IngredientItem
-            onClick={() => setMyFrige((prev) => [...prev, item.title])}
+            onClick={() => setMyFrige((prev) => [...prev, item.irdntNm])}
           >
-            <IngredientName>{item.title}</IngredientName>
+            <IngredientName>{item.irdntNm}</IngredientName>
           </IngredientItem>
         ) : (
           <SelectedIngredientItem
             onClick={() =>
               setMyFrige((prev) =>
-                [...prev].filter((element) => element !== item.title)
+                [...prev].filter((element) => element !== item.irdntNm)
               )
             }
           >
-            <IngredientName>{item.title}</IngredientName>
+            <IngredientName>{item.irdntNm}</IngredientName>
           </SelectedIngredientItem>
         )
       )}
