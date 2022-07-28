@@ -67,6 +67,25 @@ const MainBg = styled.div`
   background-color: #f8fbff;
   height: 100vh;
   width: 100vw;
+  /* overflow: hidden; */
+`;
+
+const Corn = styled.img`
+  position: fixed;
+  left: -20px;
+  bottom: 200px;
+`;
+
+const Tomato = styled.img`
+  position: fixed;
+  right: -40px;
+  bottom: 30px;
+`;
+
+const Carrot = styled.img`
+  position: fixed;
+  top: 50px;
+  right: -20px;
 `;
 
 function Main() {
@@ -74,6 +93,8 @@ function Main() {
   return (
     <MainBg>
       <Container>
+        {viewedRecipe.length > 0 ? null : <Carrot src="images/carrot.png" />}
+
         <TitleWrapper>
           <Subtitle>🍽</Subtitle>
           <Subtitle>오래된 재료는 비우고 행복은 채우는</Subtitle>
@@ -90,7 +111,12 @@ function Main() {
         <RecentlyViewedRecipeContainer>
           <RecentlyViewedRecipe />
         </RecentlyViewedRecipeContainer>
-      ) : null}
+      ) : (
+        <>
+          <Corn src="images/corn.png" />
+          <Tomato src="images/tomato.png" />
+        </>
+      )}
     </MainBg>
   );
 }

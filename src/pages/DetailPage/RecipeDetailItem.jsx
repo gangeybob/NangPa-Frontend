@@ -22,6 +22,7 @@ const ItemContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 12px 0px 0px 0px;
+  border-bottom: 0.5px solid rgba(46, 140, 254, 0.3);
 `;
 
 const RecipeDescriptionText = styled.p`
@@ -44,21 +45,15 @@ const RecipeNoContainer = styled.div`
   padding: 5px 10px;
   margin-right: 10px;
   white-space: nowrap;
-`;
-
-const RecipeNoText = styled.p`
   font-weight: 700;
   font-size: 14px;
   line-height: 17px;
   letter-spacing: -0.165px;
-  margin: 0;
   color: #2e8cfe;
 `;
 
 const RecipeDescriptionContainer = styled.div`
   display: flex;
-
-  justify-content: center;
 `;
 
 function RecipeDetailItem({ description, src, no }) {
@@ -70,9 +65,7 @@ function RecipeDetailItem({ description, src, no }) {
         </RecipeDetailPhotoContainer>
       ) : null}
       <RecipeDescriptionContainer>
-        <RecipeNoContainer>
-          <RecipeNoText>Step {no}</RecipeNoText>
-        </RecipeNoContainer>
+        <RecipeNoContainer>Step {no}</RecipeNoContainer>
         <RecipeDescriptionText>{description}</RecipeDescriptionText>
       </RecipeDescriptionContainer>
     </ItemContainer>

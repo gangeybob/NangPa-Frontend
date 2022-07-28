@@ -132,13 +132,12 @@ function Frige() {
   useEffect(() => {
     (async () => {
       const response = await fetch(
-        "https://naengpa.herokuapp.com/recipe/getIrdnt"
+        "https://nangpa-server.herokuapp.com/recipe/getIrdnt"
       );
       const json = await response.json();
       setIrdnt(json);
     })();
   }, []);
-  console.log(irdnt);
 
   return (
     <>
@@ -161,26 +160,25 @@ function Frige() {
               {results.map((item) =>
                 searchInput === "" ? null : (
                   <div>
-                    {myFrige.indexOf(item.title) === -1 ? (
+                    {myFrige.indexOf(item.irdntNm) === -1 ? (
                       <IngredientItem
                         onClick={() => {
-                          console.log(item.title);
-                          setMyFrige((prev) => [...prev, item.title]);
+                          setMyFrige((prev) => [...prev, item.irdntNm]);
                         }}
                       >
-                        <IngredientName>{item.title}</IngredientName>
+                        <IngredientName>{item.irdntNm}</IngredientName>
                       </IngredientItem>
                     ) : (
                       <SelectedIngredientItem
                         onClick={() =>
                           setMyFrige((prev) =>
                             [...prev].filter(
-                              (element) => element !== item.title
+                              (element) => element !== item.irdntNm
                             )
                           )
                         }
                       >
-                        <IngredientName>{item.title}</IngredientName>
+                        <IngredientName>{item.irdntNm}</IngredientName>
                       </SelectedIngredientItem>
                     )}
                   </div>
