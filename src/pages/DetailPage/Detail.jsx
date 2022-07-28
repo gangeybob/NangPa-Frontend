@@ -10,6 +10,8 @@ import { viewedRecipeAtom } from "../../atom";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
+import GoBackButton from "../../components/goBackButton";
+import Header from "../../components/Header";
 
 const RecipePhotoContainer = styled.div`
   position: relative;
@@ -22,8 +24,9 @@ const RecipePhoto = styled.img`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: auto;
+  width: 100vw;
   height: 100%;
+  object-fit: cover;
 `;
 
 const RecipePhotoGradient = styled.div`
@@ -105,6 +108,12 @@ const Border = styled.div`
   margin: 32px 0px 20px 0px;
 `;
 
+const FixedGoBackButton = styled(GoBackButton)`
+  display: flex;
+  align-items: center;
+  margin-left: 26px;
+`;
+
 function Detail() {
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
   const [recipeDetail, setRecipeDetail] = useState([]);
@@ -132,6 +141,8 @@ function Detail() {
 
   return (
     <>
+      <Header></Header>
+
       <RecipePhotoContainer>
         <RecipePhoto src={recipeImg} />
         <RecipePhotoGradient />

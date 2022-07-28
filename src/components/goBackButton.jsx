@@ -3,11 +3,11 @@ import styled from "styled-components";
 import { ReactComponent as Cookie } from "../assets/Arrow-Right.svg";
 import { useNavigate } from "react-router-dom";
 
-const GoBackButton = () => {
+const GoBackButton = ({ ...rest }) => {
   const navigate = useNavigate();
 
   return (
-    <Wrapper>
+    <Wrapper {...rest}>
       <StyledMyIcon onClick={() => navigate(-1)}> </StyledMyIcon>
     </Wrapper>
   );
