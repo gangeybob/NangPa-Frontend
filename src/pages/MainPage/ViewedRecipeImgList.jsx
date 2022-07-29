@@ -44,13 +44,12 @@ function ViewedRecipeImgList({ item }) {
     })
       .then((Response) => {
         setViewedRecipeData(Response.data);
-        console.log(Response.data);
       })
       .catch((Error) => {
         console.log(Error);
       });
   }, []);
-  console.log(viewedRecipeData);
+
   return (
     <ViewedRecipeImgListContainer>
       <ViewedRecipePhotoGradient />

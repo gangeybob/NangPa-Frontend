@@ -43,6 +43,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   z-index: 1056;
+  max-width: 420px;
 `;
 
 const StyledMyIconHome = styled(Home)``;

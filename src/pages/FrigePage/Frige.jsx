@@ -131,7 +131,6 @@ function Frige() {
   const [searchInput, setSearchInput] = useState("");
   const [myFrige, setMyFrige] = useRecoilState(myFrigeAtom);
   const [irdnt, setIrdnt] = useState([]);
-  console.log(myFrige);
 
   useEffect(() => {
     (async () => {

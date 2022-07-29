@@ -121,7 +121,6 @@ function Detail() {
     setViewedRecipe((prev) => [recipeId, ...prev]);
   }, [setViewedRecipe]);
   const { recipeId } = useParams();
-  console.log(viewedRecipe);
 
   useEffect(() => {
     (async () => {
