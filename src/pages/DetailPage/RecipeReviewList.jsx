@@ -28,32 +28,40 @@ const RecipeReviewListContainer = styled.div`
 
 const reviewMockData = [
   {
-    src: "https://static.wtable.co.kr/image-resize/production/service/recipe/121/16x9/17715671-f763-4f85-ad7e-2b10097b77fb.jpg",
+    id: 1,
+    src: "https://i.pinimg.com/564x/fd/ef/df/fdefdf72005e565dc9a8abcabe4761a3.jpg",
   },
 
   {
-    src: "https://recipe1.ezmember.co.kr/cache/recipe/2018/12/12/6d6941d611d34c90c5dc19f4d67c857a1.jpg",
+    id: 2,
+    src: "https://i.pinimg.com/564x/f8/49/6d/f8496d5213fed11a3b89ba50bade351e.jpg",
   },
 
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    id: 3,
+    src: "https://i.pinimg.com/564x/9f/04/d6/9f04d68421dd61d102a75accb8f0b613.jpg",
   },
 
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    id: 4,
+    src: "https://i.pinimg.com/564x/3a/92/d5/3a92d58a7baf4733bbb68ed3ec4f04b2.jpg",
   },
 
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    id: 5,
+    src: "https://i.pinimg.com/564x/dc/53/67/dc53679ff5254bf074bcfd81e1c7c4a0.jpg",
   },
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    id: 6,
+    src: "https://i.pinimg.com/736x/8d/fe/a0/8dfea0b5ef3ff6c567709518e31ae47b.jpg",
   },
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    id: 7,
+    src: "https://i.pinimg.com/564x/4b/fa/bb/4bfabb8e544f576ac90522d08a4f521c.jpg",
   },
   {
-    src: "https://image.msscdn.net/images/goods_img/20220419/2499333/2499333_1_500.jpg",
+    id: 8,
+    src: "https://i.pinimg.com/564x/91/70/6a/91706acc3cce7f7ba6adbffffe893c84.jpg",
   },
 ];
 
@@ -65,7 +73,7 @@ function RecipeReviewList() {
         {reviewMockData.map((item) => {
           return (
             <div>
-              <RecipeReviewPhoto key={item.src} src={item.src} />
+              <RecipeReviewPhoto key={item.id} src={item.src} />
             </div>
           );
         })}

@@ -9,11 +9,13 @@ import MyFrige from "../pages/MyFrigePage/MyFrige";
 import ResultList from "../pages/resultList";
 import Navigation from "../components/navigation";
 import styled from "styled-components";
+import ScrollToTop from "../components/ScrollToTop";
 
 const RootRoute = () => {
   return (
     <RouteWrapper>
       <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <ScrollToTop />
         <Navigation></Navigation>
         <Routes>
           <Route path="/" element={<Main />} />
