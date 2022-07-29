@@ -246,13 +246,11 @@ function SearchIndex() {
             내 냉장고에서도 골라보세요
           </SelectTitle>
           <SelectItemArea className="w-100">
-            {viewMyFrigeAtom === [] ? (
-              <span>냉장고 버튼을 눌러서 냉장고 내 재료를 채워주세요</span>
-            ) : (
-              viewMyFrigeAtom.map((item) => (
-                <FrigeButton handleAdd={handleAdd} item={item}></FrigeButton>
-              ))
-            )}
+            {viewMyFrigeAtom.length === 0
+              ? "냉장고 버튼을 눌러서 냉장고 내 재료를 채워주세요"
+              : viewMyFrigeAtom.map((item) => (
+                  <FrigeButton handleAdd={handleAdd} item={item}></FrigeButton>
+                ))}
           </SelectItemArea>
         </Col>
       </Row>
