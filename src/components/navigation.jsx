@@ -31,10 +31,11 @@ const Navigation = () => {
 
 export default Navigation;
 const Container = styled.div`
-  width: 100%;
+  width: 420px;
   position: fixed;
   padding: 22px 30px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0;
   height: 64px;
   background-color: white;
