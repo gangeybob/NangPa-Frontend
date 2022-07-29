@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Container, Figure, Button, Modal } from "react-bootstrap";
+
+import { currentPageAtom } from "../../atom";
+import { useRecoilState } from "recoil";
 
 import styled from "styled-components";
 import "./mypage.css";
@@ -66,6 +69,10 @@ const Wrapping = styled.div`
 function MyPage(props) {
   const [show, setShow] = useState(true);
   const handleShow = () => setShow(true);
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  useEffect(() => {
+    setCurrentPage("mypage");
+  }, []);
 
   return (
     <Container className="container mypage-wrap min-vh-100">

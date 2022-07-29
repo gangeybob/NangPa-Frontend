@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { myFrigeAtom } from "../../atom";
+import { myFrigeAtom, currentPageAtom } from "../../atom";
 
 const MyFrigeContainer = styled.div`
   display: flex;
@@ -107,6 +108,10 @@ const FrigeGradient = styled.div`
 `;
 function MyFrige() {
   const [myFrige, setMyFrigeAtom] = useRecoilState(myFrigeAtom);
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  useEffect(() => {
+    setCurrentPage("frige");
+  }, []);
   return (
     <MyFrigeContainer>
       <MyFrigeSubtitle>

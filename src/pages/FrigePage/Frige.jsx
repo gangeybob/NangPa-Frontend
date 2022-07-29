@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../assets/search.svg";
-import { myFrigeAtom } from "../../atom";
+import { myFrigeAtom, currentPageAtom } from "../../atom";
 import AllFrigeList from "./AllFrigeList";
 
 let data = ["간장", "계란", "밥", "참기름", "버터"];
@@ -128,8 +128,10 @@ function Frige() {
   const [myFrige, setMyFrige] = useRecoilState(myFrigeAtom);
   const [irdnt, setIrdnt] = useState([]);
   console.log(myFrige);
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
 
   useEffect(() => {
+    setCurrentPage("frige");
     (async () => {
       const response = await fetch(
         "https://nangpa-server.herokuapp.com/recipe/getIrdnt"

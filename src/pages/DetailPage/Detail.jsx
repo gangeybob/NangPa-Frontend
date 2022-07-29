@@ -6,7 +6,7 @@ import IngredientTagList from "./IngredientTagList";
 import RecipeDetailItemList from "./RecipeDetailItemList";
 import RecipeReviewList from "./RecipeReviewList";
 import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
-import { viewedRecipeAtom } from "../../atom";
+import { viewedRecipeAtom, currentPageAtom } from "../../atom";
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
@@ -117,6 +117,11 @@ const FixedGoBackButton = styled(GoBackButton)`
 function Detail() {
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
   const [recipeDetail, setRecipeDetail] = useState([]);
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  useEffect(() => {
+    setCurrentPage("search");
+  }, []);
+
   useEffect(() => {
     setViewedRecipe((prev) => [recipeId, ...prev]);
   }, [setViewedRecipe]);

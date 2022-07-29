@@ -13,3 +13,8 @@ export const myFrigeAtom = atom({
   key: "viewedFrige",
   default: [],
 });
+
+export const currentPageAtom = atom({
+  key: "currnetPage",
+  default: "",
+});

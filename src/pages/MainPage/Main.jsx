@@ -1,8 +1,9 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, useRecoilState } from "recoil";
 import styled from "styled-components";
 import { ReactComponent as Search } from "../../assets/search.svg";
-import { viewedRecipeAtom } from "../../atom";
+import { viewedRecipeAtom, currentPageAtom } from "../../atom";
 import RecentlyViewedRecipe from "./RecentlyViewedRecipe";
 
 const Container = styled.div`
@@ -96,6 +97,10 @@ const Burger = styled.img`
 
 function Main() {
   const viewedRecipe = useRecoilValue(viewedRecipeAtom);
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
+  useEffect(() => {
+    setCurrentPage("main");
+  }, []);
   return (
     <MainBg>
       <Container>

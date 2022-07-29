@@ -7,7 +7,7 @@ import { ReactComponent as Heart } from "../assets/shape.svg";
 import { ReactComponent as ArrowRight } from "../assets/upButton.svg";
 import { useScroll } from "../hooks/useScroll";
 import axios from "axios";
-import { selectedIngredientAtom } from "../atom";
+import { selectedIngredientAtom, currentPageAtom } from "../atom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import FoodButtonAlone from "../components/foodButtonAlone";
 import { useNavigate } from "react-router-dom";
@@ -23,10 +23,12 @@ const ResultList = () => {
   const [foodData, setFoodData] = useState([]);
   const [foodList, setFoodList] = useState([...selectedIngredient]);
   const [show, setShow] = useState(false);
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
 
   let abc = useRef();
   useEffect(() => {
     abc.current = [...selectedIngredient];
+    setCurrentPage("search");
     axios({
       method: "POST",
       url: "https://nangpa-server.herokuapp.com/recipe/getRecipeList",

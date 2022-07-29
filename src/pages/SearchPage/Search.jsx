@@ -16,7 +16,11 @@ import { ReactComponent as searchXButton } from "../../assets/searchXButton.svg"
 import { ReactComponent as inputSearchButton } from "../../assets/inputSearch.svg";
 import axios from "axios";
 import { useRecoilState } from "recoil";
-import { myFrigeAtom, selectedIngredientAtom } from "../../atom";
+import {
+  myFrigeAtom,
+  selectedIngredientAtom,
+  currentPageAtom,
+} from "../../atom";
 import FrigeButton from "../../components/frigeButton";
 import { useNavigate } from "react-router-dom";
 
@@ -129,6 +133,7 @@ function SearchIndex() {
   const [viewMyFrigeAtom, setViewMyFrigeAtom] = useRecoilState(myFrigeAtom);
   const [dataState, SetDataState] = useState(false);
   const [data, setData] = useState([]);
+  const [currentPage, setCurrentPage] = useRecoilState(currentPageAtom);
   useEffect(() => {
     axios
       .get("https://nangpa-server.herokuapp.com/recipe/getIrdnt")
@@ -139,6 +144,7 @@ function SearchIndex() {
         }
         setData(data);
         SetDataState(true);
+        setCurrentPage("search");
       })
       .catch((Error) => {
         console.error(Error); //error타입으로

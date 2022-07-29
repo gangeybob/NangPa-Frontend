@@ -7,7 +7,8 @@ import { ReactComponent as mypage } from "../assets/icon_mypage.svg";
 import { ReactComponent as refrigerator } from "../assets/icon_refrigerator.svg";
 import { ReactComponent as search } from "../assets/icon_search.svg";
 
-const Navigation = () => {
+const Navigation = (props) => {
+  console.log();
   return (
     <Container>
       <Link to={"/"}>
@@ -45,7 +46,9 @@ const Container = styled.div`
   z-index: 1056;
 `;
 
-const StyledMyIconHome = styled(Home)``;
+const StyledMyIconHome = styled(Home)`
+  stroke: #2e8cfe;
+`;
 const StyledMyIconCommunity = styled(community)``;
 const StyledMyIconMypage = styled(mypage)``;
 const StyledMyIconRefrigerator = styled(refrigerator)``;
