@@ -192,8 +192,9 @@ const ModalStyle = styled(Modal)`
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   padding-bottom: 20px;
-  max-width: 100%;
+  width: 418px;
   position: fixed;
   top: 0px;
   padding-top: 10px;
@@ -204,7 +205,7 @@ const HeaderContainer = styled.div`
 
 const ButtonIconContainer = styled.div`
   margin-top: 12px;
-  width: 335px;
+  width: 340px;
   display: flex;
   justify-content: space-between;
 `;
@@ -278,7 +279,7 @@ const TextWrapper = styled.div`
   cursor: pointer;
   img {
     object-fit: cover;
-    width: 335px;
+    width: 100%;
     height: 184px;
     border-radius: 10px;
     pointer-events: none;
