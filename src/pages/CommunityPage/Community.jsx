@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Container, Card, ListGroupItem, ListGroup, Row, Col, ButtonGroup, Button, ToggleButton, Nav, Modal } from 'react-bootstrap';
 import styled from 'styled-components';
-import { Container, Card, ListGroupItem, ListGroup, Row, Col, ButtonGroup, ToggleButton, Nav, Modal } from 'react-bootstrap';
+import LikeButton from './LikeButton';
+
 import './community.css';
 
 const HeaderWrap = styled.section`
@@ -96,7 +98,6 @@ const ShareGroup = styled.div`
 `;
 
 function Community() {
-    const [checked, setChecked] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -166,27 +167,19 @@ function Community() {
 
     const renderCard = (card, index) => {
         return (
-            <ListGroupItem className='community-item'>
+            <ListGroupItem>
                 <Card key={index}>
                     <Card.Img variant='top' src={card.image} />
                     <Card.Body>
                         <Card.Text>
                             <MetaWrap>
-                                <ButtonGroup className='btn-heart'>
-                                    <ToggleButton
-                                        id='toggle-check'
-                                        type='checkbox'
-                                        checked={checked}
-                                        value='1'
-                                        onChange={(e) => setChecked(e.currentTarget.checked)}
-                                    />
-                                </ButtonGroup>
+                                <LikeButton />
                                 <ShareGroup>
                                     <ButtonGroup className='btn-bookmark'>
-                                        <ToggleButton id='toggle-check' type='checkbox' />
+                                        <ToggleButton type='checkbox' />
                                     </ButtonGroup>
                                     <ButtonGroup className='btn-share'>
-                                        <ToggleButton id='toggle-check' type='checkbox' />
+                                        <ToggleButton type='checkbox' />
                                     </ButtonGroup>
                                 </ShareGroup>
                             </MetaWrap>
