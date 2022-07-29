@@ -1,5 +1,6 @@
-.mypage-wrap {
+.mypage-wrap.container {
     position: relative;
+    max-width: 425px;
     background-color: #f8fbff;
     text-align: center;
 }

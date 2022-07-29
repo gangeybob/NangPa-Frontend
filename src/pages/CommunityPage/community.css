@@ -1,4 +1,5 @@
 .community-wrap.container {
+    max-width: 425px;
     --bs-gutter-x: 0;
     padding-right: var(--bs-gutter-x);
     padding-left: var(--bs-gutter-x);
