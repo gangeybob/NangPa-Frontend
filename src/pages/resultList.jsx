@@ -193,7 +193,7 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
-  width: 100%;
+  max-width: 100%;
   position: fixed;
   top: 0px;
   padding-top: 10px;
