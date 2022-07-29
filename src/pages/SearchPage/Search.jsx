@@ -55,7 +55,7 @@ const SelectItemArea = styled.h3`
   font-size: 14px;
   line-height: 17px;
   letter-spacing: -0.165px;
-  color: #a4a4a4;
+  color: #9ba1af;
   background: var(--input-text-bg);
   border-radius: 10px;
 `;
@@ -101,6 +101,9 @@ const StyledFormControl = styled(FormControl)`
   height: 42px;
   font-size: 14px;
   font-weight: 500;
+  ::placeholder {
+    color: #9ba1af;
+  }
 `;
 
 const RecipeSearchButton = styled.div`
@@ -193,7 +196,9 @@ function SearchIndex() {
             <StyledMyIconSearch searchInput={searchInput}></StyledMyIconSearch>
             <StyledFormControl
               className="border border-0 search-input"
-              placeholder="재료를 불러오고 있어요"
+              placeholder={
+                dataState ? "재료를 검색해주세요" : "재료를 불러오고 있어요"
+              }
               value={searchInput}
               onChange={handleChangingSearch}
               searchInput={searchInput}
@@ -247,7 +252,7 @@ function SearchIndex() {
           </SelectTitle>
           <SelectItemArea className="w-100">
             {viewMyFrigeAtom.length === 0
-              ? "냉장고 버튼을 눌러서 냉장고 내 재료를 채워주세요"
+              ? "하단의 냉장고 버튼을 눌러서 냉장고를 채워주세요"
               : viewMyFrigeAtom.map((item) => (
                   <FrigeButton handleAdd={handleAdd} item={item}></FrigeButton>
                 ))}
