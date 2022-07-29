@@ -179,7 +179,7 @@ const ResultList = () => {
 export default ResultList;
 const ResultListWrapper = styled.div`
   position: relative;
-  width: 375px;
+  width: 100%;
   margin: auto;
   box-sizing: border-box;
 `;
@@ -193,7 +193,7 @@ const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
-  width: 375px;
+  width: 100%;
   position: fixed;
   top: 0px;
   padding-top: 10px;

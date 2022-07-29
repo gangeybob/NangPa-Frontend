@@ -31,7 +31,7 @@ const Navigation = () => {
 
 export default Navigation;
 const Container = styled.div`
-  width: 420px;
+  width: 100%;
   position: fixed;
   padding: 22px 30px;
   left: 50%;
