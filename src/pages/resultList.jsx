@@ -317,9 +317,9 @@ const UpButton = styled.button`
   line-height: 45px;
   text-align: center;
   border-radius: 50%;
-  position: fixed;
+  position: sticky;
   bottom: 94px;
-  right: 25px;
+  transform: translateX(350px);
   background-color: white;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   transition: all 300ms ease;
