@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Card, ListGroupItem, ListGroup, Row, Col, ButtonGroup, ToggleButton, Nav, Modal } from 'react-bootstrap';
+import { Container, Card, ListGroupItem, ListGroup, Row, Col, ButtonGroup, Button, ToggleButton, Nav, Modal } from 'react-bootstrap';
 import LikeButton from './LikeButton';
 import styled from 'styled-components';
 import './community.css';
@@ -58,8 +58,10 @@ const ScrollWrap = styled.div`
     margin-left: -4px;
     padding-right: 20px;
     flex-wrap: nowrap;
-    
-    &::-webkit-scrollbar{ display:none; }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 `;
 
 const StyledButton = styled(Nav.Link)`
@@ -95,6 +97,7 @@ const ShareGroup = styled.div`
 `;
 
 function Community() {
+    const [checked, setChecked] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -169,14 +172,16 @@ function Community() {
                     <Card.Img variant='top' src={card.image} />
                     <Card.Body>
                         <Card.Text>
-                            <LikeButton />
                             <MetaWrap>
+                                <ButtonGroup className='btn-heart'>
+                                    <ToggleButton id='toggle-check' type='checkbox' checked={checked} />
+                                </ButtonGroup>
                                 <ShareGroup>
                                     <ButtonGroup className='btn-bookmark'>
-                                        <ToggleButton id='toggle-check' type='checkbox' />
+                                        <ToggleButton type='checkbox' />
                                     </ButtonGroup>
                                     <ButtonGroup className='btn-share'>
-                                        <ToggleButton id='toggle-check' type='checkbox' />
+                                        <ToggleButton type='checkbox' />
                                     </ButtonGroup>
                                 </ShareGroup>
                             </MetaWrap>
