@@ -48,7 +48,7 @@ function IngredientTagList({ recipeIrdnts }) {
   //     setSelectedIngredientAtom(["토마토", "계란", "식빵"]);
   //   }, [setSelectedIngredientAtom]);
   const selectedIngredient = useRecoilValue(selectedIngredientAtom);
-  console.log(selectedIngredient);
+
   return (
     <StyledIngredientTagList>
       {recipeIrdnts?.map((item) => {
