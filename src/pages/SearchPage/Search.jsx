@@ -45,7 +45,6 @@ const SelectTitle = styled.h3`
 const SelectedItemWrap = styled.div`
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 0.5px solid rgba(73, 73, 73, 0.4);
 `;
 const SelectItemArea = styled.h3`
   display: flex;
@@ -56,15 +55,15 @@ const SelectItemArea = styled.h3`
   font-size: 14px;
   line-height: 17px;
   letter-spacing: -0.165px;
-  color: #a4a4a4;
-  background: #f2f2f2;
+  color: #9ba1af;
+  background: var(--input-text-bg);
   border-radius: 10px;
 `;
 const FoodButtonContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  height: 120px;
-  background-color: #f1f1f1;
+  min-height: 120px;
+  background: var(--input-text-bg);
   width: 100%;
   padding: 21px 14px;
   -ms-overflow-style: none;
@@ -80,7 +79,7 @@ const StyledMyIconSearch = styled(inputSearchButton)`
   cursor: pointer;
   position: absolute;
   left: 15px;
-  top: 25px;
+  top: 22px;
   transform: translateY(-50%);
 `;
 const FormControlWrapper = styled.div`
@@ -91,7 +90,7 @@ const StyledMyIconSearchX = styled(searchXButton)`
   cursor: pointer;
   position: absolute;
   right: 15px;
-  top: 15px;
+  top: 13px;
 `;
 
 const StyledFormControl = styled(FormControl)`
@@ -99,15 +98,22 @@ const StyledFormControl = styled(FormControl)`
   padding-left: ${({ searchInput }) => (searchInput === "" ? "37px" : "13px")};
   background: var(--input-text-bg);
   border-radius: 10px;
+  height: 42px;
+  font-size: 14px;
+  font-weight: 500;
+  ::placeholder {
+    color: #9ba1af;
+  }
 `;
 
 const RecipeSearchButton = styled.div`
   margin-bottom: 21px;
   padding: 10px 20px;
   height: 57px;
+  box-shadow: 0px 3px 10px #a9d0ff;
   line-height: 65px;
-  font-weight: 500;
-  font-size: 20px;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 37px;
   letter-spacing: -0.165px;
   color: #fff;
@@ -138,17 +144,15 @@ function SearchIndex() {
         SetDataState(true);
       })
       .catch((Error) => {
-        console.log(Error);
+        console.error(Error); //error타입으로
       });
   }, []);
 
   const addListClick = (e) => {
     setSelectedIngredient([...selectedIngredient, e.target.outerText]);
     setData(data.filter((item) => item !== e.target.outerText));
-    console.log(e);
   };
   const handleDelete = (e) => {
-    console.log(selectedIngredient, data);
     setSelectedIngredient(
       selectedIngredient.filter((item) => item !== e.target.outerText)
     );
@@ -166,7 +170,6 @@ function SearchIndex() {
   const handleAdd = (e) => {
     setSelectedIngredient([...selectedIngredient, e.target.outerText]);
     setData(data.filter((item) => item !== e.target.outerText));
-    console.log(selectedIngredient, e.target.outerText);
   };
 
   const navigate = useNavigate();
@@ -193,7 +196,9 @@ function SearchIndex() {
             <StyledMyIconSearch searchInput={searchInput}></StyledMyIconSearch>
             <StyledFormControl
               className="border border-0 search-input"
-              placeholder="재료를 불러오고 있어요"
+              placeholder={
+                dataState ? "재료를 검색해주세요" : "재료를 불러오고 있어요"
+              }
               value={searchInput}
               onChange={handleChangingSearch}
               searchInput={searchInput}
@@ -246,8 +251,8 @@ function SearchIndex() {
             내 냉장고에서도 골라보세요
           </SelectTitle>
           <SelectItemArea className="w-100">
-            {viewMyFrigeAtom === []
-              ? "냉장고 버튼을 눌러서 냉장고 내 재료를 채워주세요"
+            {viewMyFrigeAtom.length === 0
+              ? "하단의 냉장고 버튼을 눌러서 냉장고를 채워주세요"
               : viewMyFrigeAtom.map((item) => (
                   <FrigeButton handleAdd={handleAdd} item={item}></FrigeButton>
                 ))}

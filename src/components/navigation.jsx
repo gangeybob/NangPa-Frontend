@@ -34,7 +34,8 @@ const Container = styled.div`
   width: 100%;
   position: fixed;
   padding: 22px 30px;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   bottom: 0;
   height: 64px;
   background-color: white;
@@ -42,6 +43,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   z-index: 1056;
+  max-width: 420px;
 `;
 
 const StyledMyIconHome = styled(Home)``;

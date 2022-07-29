@@ -6,18 +6,23 @@ import axios from "axios";
 import ViewedRecipeImgItem from "./ViewedRecipeImgItem";
 import { Link } from "react-router-dom";
 
-const mockData = [
-  {
-    recipeId: 76,
-    imgUrl:
-      "https://static.wtable.co.kr/image-resize/production/service/recipe/121/16x9/17715671-f763-4f85-ad7e-2b10097b77fb.jpg",
-  },
-  {
-    recipeId: 239,
-    imgUrl:
-      "https://static.wtable.co.kr/image-resize/production/service/recipe/121/16x9/17715671-f763-4f85-ad7e-2b10097b77fb.jpg",
-  },
-];
+const ViewedRecipeImgListContainer = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 16px;
+`;
+
+const ViewedRecipePhotoGradient = styled.div`
+  width: 132px;
+  height: 124px;
+  position: absolute;
+  right: -1px;
+  background: linear-gradient(
+    270deg,
+    #f8fbff 0%,
+    rgba(255, 255, 255, 0) 96.81%
+  );
+`;
 
 function ViewedRecipeImgList({ item }) {
   const [viewedRecipe, setViewedRecipe] = useRecoilState(viewedRecipeAtom);
@@ -39,26 +44,30 @@ function ViewedRecipeImgList({ item }) {
     })
       .then((Response) => {
         setViewedRecipeData(Response.data);
-        console.log(Response.data);
       })
       .catch((Error) => {
         console.log(Error);
       });
   }, []);
-  console.log(viewedRecipeData);
-  return numberLimitViewedRecipe.map((item) => {
-    for (let x of viewedRecipeData) {
-      if (x.recipeId === item) {
-        return (
-          <Link to={`/${x.recipeId}/detail`}>
-            <div>
-              <ViewedRecipeImgItem src={x.imgUrl} />
-            </div>
-          </Link>
-        );
-      }
-    }
-  });
+
+  return (
+    <ViewedRecipeImgListContainer>
+      <ViewedRecipePhotoGradient />
+      {numberLimitViewedRecipe.map((item) => {
+        for (let x of viewedRecipeData) {
+          if (x.recipeId === item) {
+            return (
+              <Link to={`/${x.recipeId}/detail`}>
+                <div>
+                  <ViewedRecipeImgItem src={x.imgUrl} />
+                </div>
+              </Link>
+            );
+          }
+        }
+      })}
+    </ViewedRecipeImgListContainer>
+  );
 }
 
 export default ViewedRecipeImgList;

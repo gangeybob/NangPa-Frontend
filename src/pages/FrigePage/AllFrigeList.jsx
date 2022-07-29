@@ -9,6 +9,7 @@ const IngredientItem = styled.button`
   display: flex;
   align-items: center;
   color: #a9a9a9;
+  padding: 0;
 `;
 
 const SelectedIngredientItem = styled.button`
@@ -19,6 +20,7 @@ const SelectedIngredientItem = styled.button`
   align-items: center;
   height: 37px;
   color: white;
+  padding: 0;
 `;
 
 const IngredientName = styled.p`
@@ -31,12 +33,11 @@ const IngredientName = styled.p`
 
 const AllFrigeListContainer = styled.div`
   width: 100%;
-  padding: 30px 28px 30px 28px;
+  padding: 30px 27px 60px 27px;
   flex-wrap: wrap;
   display: flex;
   gap: 8px;
   overflow-y: scroll;
-  height: 480px;
 `;
 
 function AllFrigeList({ irdnt }) {

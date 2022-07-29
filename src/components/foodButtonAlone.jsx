@@ -11,16 +11,14 @@ export default FoodButtonAlone;
 const Wrapper = styled.button`
   white-space: nowrap;
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-direction: row;
   margin-right: 8px;
-  padding: 10px 20px;
+  padding: 7px 15px;
   border-radius: 20px;
   font-size: 14px;
   color: white;
   background-color: ${({ theme }) => theme.colors.MAIN_COLOR};
 `;
 
-const FoodText = styled.div`
-  margin-right: 5px;
-`;
+const FoodText = styled.div``;
