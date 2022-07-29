@@ -11,17 +11,18 @@ import { selectedIngredientAtom } from "../atom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import FoodButtonAlone from "../components/foodButtonAlone";
 import { useNavigate } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
 
 const ResultList = () => {
   const homeRef = useRef(0);
   const [byPopularState, setByPopularState] = useState(true);
   // const [mainTextIs, setMainTextIs] = useState(true);
-  const [scrollLocation, setScrollLocation] = useState(0);
   const [selectedIngredient, setSelectedIngredient] = useRecoilState(
     selectedIngredientAtom
   );
   const [foodData, setFoodData] = useState([]);
   const [foodList, setFoodList] = useState([...selectedIngredient]);
+  const [show, setShow] = useState(false);
 
   let abc = useRef();
   useEffect(() => {
@@ -36,10 +37,8 @@ const ResultList = () => {
     })
       .then((res) => {
         setFoodData(res.data);
-        console.log(res.data);
       })
       .catch((error) => {
-        console.log(error);
         throw new Error(error);
       });
   }, []);
@@ -52,9 +51,7 @@ const ResultList = () => {
     threshold: 0.3,
   };
   const observerCallback = (entries, observer) => {
-    entries.forEach((entry) => {
-      console.log(entry);
-    });
+    entries.forEach((entry) => {});
   };
   const observer = new IntersectionObserver(observerCallback, observeroption);
 
@@ -81,26 +78,48 @@ const ResultList = () => {
 
   const navigate = useNavigate();
   const clickHistoryData = (e) => {
-    console.log(e.target.id);
     navigate(`/${e.target.id}/detail`, { replace: false, state: e.target.id });
   };
   const handleScroll = () => {
     document.getElementById("root").scrollIntoView({ behavior: "smooth" });
   };
+  const handleShow = () => {
+    setShow(true);
+  };
+  const handleClose = () => {
+    setShow(false);
+  };
   return (
     <ResultListWrapper ref={homeRef}>
+      <Modal
+        onHide={handleClose}
+        show={show}
+        size="lg"
+        centered
+        className="error-modal"
+      >
+        <Modal.Header>
+          <Modal.Title>필터기능은 준비 중입니다</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          보다 나은 서비스를 위하여 필터기능 준비 중에 있습니다.
+          <br />
+          빠른 시일 내에 준비하여 찾아뵙겠습니다.
+        </Modal.Body>
+        <Button onClick={handleClose}>닫기</Button>
+      </Modal>
       <HeaderContainer>
         <ButtonIconContainer>
           <GoBackButton></GoBackButton>
-          <FilterButton></FilterButton>
+          <FilterButton handleShow={handleShow}></FilterButton>
         </ButtonIconContainer>
         <TitleWhoIs scrollY={scrollY}>
           셰프의 재료로 만들 수 있는<br></br>멋진 요리들이에요{" "}
           <img
-            width={25}
-            height={25}
+            width={35}
+            height={35}
             alt=""
-            src="https://ifh.cc/g/bkxs4R.png"
+            src="https://ifh.cc/g/MzlDmN.png"
           ></img>
         </TitleWhoIs>
         <TitleChosen>선택한 재료</TitleChosen>
@@ -159,23 +178,28 @@ const ResultList = () => {
 
 export default ResultList;
 const ResultListWrapper = styled.div`
-  padding: 20px;
   position: relative;
   width: 375px;
   margin: auto;
   box-sizing: border-box;
 `;
 
+const ModalStyle = styled(Modal)`
+  padding: 20px;
+  width: 100%;
+  position: absolute;
+`;
 const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
-  width: 350px;
+  width: 375px;
   position: fixed;
   top: 0px;
   padding-top: 10px;
   background-color: white;
+  padding: 24px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
 `;
 
 const ButtonIconContainer = styled.div`
@@ -193,16 +217,17 @@ const TitleWhoIs = styled.div`
   font-size: 24px;
   line-height: 120%;
   img {
-    transform: translateY(-20%);
+    transform: translateX(-10%) translateY(-10%);
   }
 `;
 
 const TitleChosen = styled.div`
   margin-top: 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 14px;
   line-height: 120%;
   margin-bottom: 15px;
+  color: #a6a6a6;
 `;
 
 const FoodListWrapper = styled.div`
@@ -214,7 +239,8 @@ const FoodListWrapper = styled.div`
   }
 `;
 const MainContainer = styled.div`
-  padding-top: 217px;
+  padding: 24px;
+  padding-top: 240px;
   padding-bottom: 50px;
 `;
 
@@ -222,6 +248,7 @@ const SortingLetter = styled.div`
   margin: 10px 0;
   text-align: end;
   font-size: 14px;
+  font-weight: 600;
   .byPopular {
     color: ${({ byPopularState }) => (byPopularState ? "#2E8CFE" : "#989898")};
     background-color: ${({ byPopularState }) =>
@@ -272,6 +299,7 @@ const IconWrapper = styled.div`
   font-size: 14px;
   span {
     margin-left: 4px;
+    font-weight: 600;
   }
 `;
 

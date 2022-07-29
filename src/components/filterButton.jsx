@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { ReactComponent as Filter } from "../assets/Filter.svg";
 
-const FilterButton = () => {
+const FilterButton = ({ handleShow }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={handleShow}>
       <StyledMyIcon></StyledMyIcon>
     </Wrapper>
   );
