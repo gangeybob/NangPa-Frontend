@@ -47,7 +47,7 @@ const MyFrigeListContainer = styled.div`
   align-content: flex-start;
 `;
 
-const MyFrigeItem = styled.button`
+const MyFrigeItem = styled.div`
   background: #2e8cfe;
   border: 1px solid #2e8cfe;
   border-radius: 50px;

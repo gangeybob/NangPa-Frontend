@@ -50,6 +50,8 @@ const IngredientItemList = styled.div`
   display: flex;
   padding-bottom: 23px;
   height: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
 `;
 
 const AllFrigeListContainer = styled.div`
@@ -64,6 +66,7 @@ const IngredientItem = styled.button`
   border-radius: 50px;
   display: flex;
   align-items: center;
+  padding: 0;
 `;
 
 const SelectedIngredientItem = styled.button`
@@ -74,6 +77,7 @@ const SelectedIngredientItem = styled.button`
   align-items: center;
   height: 37px;
   color: white;
+  padding: 0;
 `;
 
 const IngredientName = styled.p`

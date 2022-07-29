@@ -9,6 +9,7 @@ const IngredientItem = styled.button`
   display: flex;
   align-items: center;
   color: #a9a9a9;
+  padding: 0;
 `;
 
 const SelectedIngredientItem = styled.button`
@@ -19,6 +20,7 @@ const SelectedIngredientItem = styled.button`
   align-items: center;
   height: 37px;
   color: white;
+  padding: 0;
 `;
 
 const IngredientName = styled.p`
