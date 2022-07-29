@@ -8,17 +8,9 @@ import { ReactComponent as Search } from "../../assets/search.svg";
 import { myFrigeAtom } from "../../atom";
 import AllFrigeList from "./AllFrigeList";
 
-let data = ["간장", "계란", "밥", "참기름", "버터"];
-
-// const FrigeContainer = styled.div`
-//   width: 100vw;
-//   height: 100vh;
-//   padding: 0px 23px;
-// `;
-
 const FrigeSearchContainer = styled.div`
   width: 100%;
-  padding: 70px 23px 0px 23px;
+  padding: 70px 27px 0px 27px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
   background-color: white;
 `;
@@ -56,9 +48,14 @@ const StyledInput = styled.input`
 
 const IngredientItemList = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
   padding-bottom: 23px;
+  height: 100%;
+`;
+
+const AllFrigeListContainer = styled.div`
+  display: flex;
+  padding-bottom: 23px;
+  height: calc(100vh - 360px);
 `;
 
 const IngredientItem = styled.button`
@@ -88,15 +85,11 @@ const IngredientName = styled.p`
 `;
 
 const SelectionCompleteBtn = styled.button`
-  z-index: 99;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 85px;
+  bottom: 83px;
   background: #2e8cfe;
   border-radius: 10px;
-  width: 328px;
-  height: 46px;
+  width: 100%;
+  height: 58px;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -105,22 +98,33 @@ const SelectionCompleteBtn = styled.button`
   letter-spacing: -0.03em;
   color: #ffffff;
   box-shadow: 0px 3px 10px #a9d0ff;
+
   &:disabled {
     background: #a9a9a9;
+    box-shadow: none;
   }
 `;
 
 const FrigeGradient = styled.div`
-  z-index: 2;
+  z-index: 0;
   width: 100%;
   height: 170px;
-  position: fixed;
+  position: absolute;
   bottom: 64px;
   background: linear-gradient(
     181.02deg,
     rgba(255, 255, 255, 0) 13.62%,
     #ffffff 55.49%
   );
+`;
+
+const Wrapper = styled.div`
+  z-index: 1;
+  width: 100%;
+  padding: 0 27px;
+  position: fixed;
+  max-width: 420px;
+  bottom: 80px;
 `;
 
 function Frige() {
@@ -188,16 +192,18 @@ function Frige() {
           )}
         />
       </FrigeSearchContainer>
-      <IngredientItemList>
+      <AllFrigeListContainer>
         <AllFrigeList irdnt={irdnt} />
-      </IngredientItemList>
-      {myFrige.length === 0 ? (
-        <SelectionCompleteBtn disabled>선택 완료</SelectionCompleteBtn>
-      ) : (
-        <Link to={{ pathname: "/myfrige" }}>
-          <SelectionCompleteBtn>선택 완료</SelectionCompleteBtn>
-        </Link>
-      )}
+      </AllFrigeListContainer>
+      <Wrapper>
+        {myFrige.length === 0 ? (
+          <SelectionCompleteBtn disabled>선택 완료</SelectionCompleteBtn>
+        ) : (
+          <Link to={{ pathname: "/myfrige" }}>
+            <SelectionCompleteBtn>선택 완료</SelectionCompleteBtn>
+          </Link>
+        )}
+      </Wrapper>
       <FrigeGradient />
     </>
   );

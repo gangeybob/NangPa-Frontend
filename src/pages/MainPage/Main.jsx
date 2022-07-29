@@ -10,7 +10,7 @@ const Container = styled.div`
   /* height: 100vh; */
   display: flex;
   flex-direction: column;
-  padding: 0px 23px;
+  padding: 0px 27px;
 `;
 
 const Subtitle = styled.p`
@@ -66,32 +66,32 @@ const RecentlyViewedRecipeContainer = styled.div`
 const MainBg = styled.div`
   background-color: #f8fbff;
   height: 100vh;
-  width: 100vw;
-  /* overflow: hidden; */
+  width: 100%;
+  overflow: hidden;
 `;
 
 const Corn = styled.img`
-  position: fixed;
+  position: absolute;
   left: -20px;
-  bottom: 200px;
+  bottom: -200px;
 `;
 
 const Tomato = styled.img`
-  position: fixed;
+  position: absolute;
   right: -40px;
-  bottom: 30px;
+  bottom: -350px;
 `;
 
 const Carrot = styled.img`
-  position: fixed;
+  position: absolute;
   top: 50px;
   right: -20px;
 `;
 
 const Burger = styled.img`
-  position: fixed;
+  position: absolute;
   top: 0px;
-  right: -130px;
+  right: -140px;
 `;
 
 function Main() {
@@ -116,17 +116,19 @@ function Main() {
             냉장고를 비워볼까요?
           </SearchBtn>
         </Link>
+
+        {viewedRecipe.length > 0 ? null : (
+          <>
+            <Corn src="images/corn.png" />
+            <Tomato src="images/tomato.png" />
+          </>
+        )}
       </Container>
       {viewedRecipe.length > 0 ? (
         <RecentlyViewedRecipeContainer>
           <RecentlyViewedRecipe />
         </RecentlyViewedRecipeContainer>
-      ) : (
-        <>
-          <Corn src="images/corn.png" />
-          <Tomato src="images/tomato.png" />
-        </>
-      )}
+      ) : null}
     </MainBg>
   );
 }

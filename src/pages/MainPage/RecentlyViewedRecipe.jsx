@@ -5,8 +5,6 @@ import { viewedRecipeAtom } from "../../atom";
 import ViewedRecipeImgList from "./ViewedRecipeImgList";
 import { useEffect } from "react";
 
-const RecentlyViewedRecipeContainer = styled.div``;
-
 const RecentlyViewedRecipeHeader = styled.div`
   width: 100%;
   padding: 0 23px;
@@ -40,21 +38,10 @@ const ViewAllText = styled.p`
 `;
 
 const ViewedRecipeImgContainer = styled.div`
-  gap: 10px;
   display: flex;
   overflow-x: scroll;
   padding-left: 23px;
-`;
-const ViewedRecipePhotoGradient = styled.div`
-  width: 132px;
-  height: 124px;
-  position: absolute;
-  right: 0;
-  background: linear-gradient(
-    270deg,
-    #f8fbff 0%,
-    rgba(255, 255, 255, 0) 96.81%
-  );
+  width: 100%;
 `;
 
 function RecentlyViewedRecipe() {
@@ -68,7 +55,6 @@ function RecentlyViewedRecipe() {
         </ViewAllContainer>
       </RecentlyViewedRecipeHeader>
       <ViewedRecipeImgContainer>
-        <ViewedRecipePhotoGradient />
         <ViewedRecipeImgList />
       </ViewedRecipeImgContainer>
     </>
