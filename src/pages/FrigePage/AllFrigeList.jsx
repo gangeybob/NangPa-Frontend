@@ -31,12 +31,11 @@ const IngredientName = styled.p`
 
 const AllFrigeListContainer = styled.div`
   width: 100%;
-  padding: 30px 28px 30px 28px;
+  padding: 30px 27px 60px 27px;
   flex-wrap: wrap;
   display: flex;
   gap: 8px;
   overflow-y: scroll;
-  height: 480px;
 `;
 
 function AllFrigeList({ irdnt }) {

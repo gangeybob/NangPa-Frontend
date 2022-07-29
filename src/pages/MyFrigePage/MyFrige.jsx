@@ -6,7 +6,7 @@ import { myFrigeAtom } from "../../atom";
 const MyFrigeContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   padding: 0px 27px;
 `;
@@ -38,7 +38,7 @@ const MyFrigeListContainer = styled.div`
   background: rgba(46, 140, 254, 0.06);
   border-radius: 10px;
   width: 100%;
-  height: 540px;
+  height: calc(100vh - 300px);
   padding: 20px 22px;
   display: flex;
   flex-wrap: wrap;
@@ -66,15 +66,11 @@ const MyFrigeName = styled.p`
 `;
 
 const SelectionCompleteBtn = styled.button`
-  z-index: 99;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 85px;
+  bottom: 83px;
   background: #2e8cfe;
   border-radius: 10px;
-  width: 328px;
-  height: 46px;
+  width: 100%;
+  height: 58px;
   font-weight: 500;
   font-size: 16px;
   line-height: 20px;
@@ -82,22 +78,19 @@ const SelectionCompleteBtn = styled.button`
   text-align: center;
   letter-spacing: -0.03em;
   color: #ffffff;
-  width: 320px;
-  height: 58px;
-
   box-shadow: 0px 3px 10px #a9d0ff;
 
   &:disabled {
     background: #a9a9a9;
-    box-shadow: 0px 3px 10px #a0a0a0;
+    box-shadow: none;
   }
 `;
 
 const FrigeGradient = styled.div`
-  z-index: 2;
-  width: 100%;
+  z-index: 0;
+  width: 90%;
   height: 170px;
-  position: fixed;
+  position: absolute;
   bottom: 64px;
   background: linear-gradient(
     181.02deg,
@@ -105,27 +98,40 @@ const FrigeGradient = styled.div`
     #ffffff 55.49%
   );
 `;
+
+const Wrapper = styled.div`
+  z-index: 1;
+  width: 100%;
+  max-width: 420px;
+  position: fixed;
+  padding: 0 27px;
+  bottom: 80px;
+`;
+
 function MyFrige() {
   const [myFrige, setMyFrigeAtom] = useRecoilState(myFrigeAtom);
   return (
-    <MyFrigeContainer>
-      <MyFrigeSubtitle>
-        오래된 재료는 비워지고{"\n"}행복은 채워질
-      </MyFrigeSubtitle>
-      <MyFrigeTitle>셰프의 냉장고 ❄️</MyFrigeTitle>
-      <MyFrigeListContainer>
-        {myFrige.map((item) => (
-          <MyFrigeItem>
-            <MyFrigeName>{item}</MyFrigeName>
-          </MyFrigeItem>
-        ))}
-      </MyFrigeListContainer>
-
-      <Link to={{ pathname: "/frige" }}>
-        <SelectionCompleteBtn>냉장고 설정 다시하기</SelectionCompleteBtn>
-      </Link>
+    <>
+      <MyFrigeContainer>
+        <MyFrigeSubtitle>
+          오래된 재료는 비워지고{"\n"}행복은 채워질
+        </MyFrigeSubtitle>
+        <MyFrigeTitle>셰프의 냉장고 ❄️</MyFrigeTitle>
+        <MyFrigeListContainer>
+          {myFrige.map((item) => (
+            <MyFrigeItem>
+              <MyFrigeName>{item}</MyFrigeName>
+            </MyFrigeItem>
+          ))}
+        </MyFrigeListContainer>
+      </MyFrigeContainer>
+      <Wrapper>
+        <Link to={{ pathname: "/frige" }}>
+          <SelectionCompleteBtn>냉장고 설정 다시하기</SelectionCompleteBtn>
+        </Link>
+      </Wrapper>
       <FrigeGradient />
-    </MyFrigeContainer>
+    </>
   );
 }
 

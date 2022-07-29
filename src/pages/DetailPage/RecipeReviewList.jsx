@@ -23,7 +23,7 @@ const RecipeReviewPhoto = styled.img`
 `;
 
 const RecipeReviewListContainer = styled.div`
-  padding-bottom: 60px;
+  padding-bottom: 70px;
 `;
 
 const reviewMockData = [
