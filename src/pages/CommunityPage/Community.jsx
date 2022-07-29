@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { Container, Card, ListGroupItem, ListGroup, Row, Col, ButtonGroup, ToggleButton, Nav, Modal } from 'react-bootstrap';
+import LikeButton from './LikeButton';
+import styled from 'styled-components';
 import './community.css';
 
 const HeaderWrap = styled.section`
@@ -94,7 +95,6 @@ const ShareGroup = styled.div`
 `;
 
 function Community() {
-    const [checked, setChecked] = useState(false);
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -164,21 +164,13 @@ function Community() {
 
     const renderCard = (card, index) => {
         return (
-            <ListGroupItem className='community-item'>
+            <ListGroupItem>
                 <Card key={index}>
                     <Card.Img variant='top' src={card.image} />
                     <Card.Body>
                         <Card.Text>
+                            <LikeButton />
                             <MetaWrap>
-                                <ButtonGroup className='btn-heart'>
-                                    <ToggleButton
-                                        id='toggle-check'
-                                        type='checkbox'
-                                        checked={checked}
-                                        value='1'
-                                        onChange={(e) => setChecked(e.currentTarget.checked)}
-                                    />
-                                </ButtonGroup>
                                 <ShareGroup>
                                     <ButtonGroup className='btn-bookmark'>
                                         <ToggleButton id='toggle-check' type='checkbox' />
