@@ -124,6 +124,7 @@ const RecipeSearchButton = styled.div`
   cursor: pointer;
   text-align: center;
 `;
+
 function SearchIndex() {
   const [searchInput, setSearchInput] = useState("");
   const [selectedIngredient, setSelectedIngredient] = useRecoilState(
